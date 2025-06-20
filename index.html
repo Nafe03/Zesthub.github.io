@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2D Fantasy RPG Adventure</title>
+    <title>Fantasy RPG Adventure</title>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,18 +13,371 @@
         }
 
         body {
-            font-family: 'Courier New', monospace;
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            font-family: 'MedievalSharp', cursive;
+            background: #000;
             color: white;
             overflow: hidden;
             user-select: none;
+            height: 100vh;
         }
 
+        /* Main Menu Styles */
+        #mainMenu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.5s;
+        }
+
+        .menu-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: -1;
+        }
+
+        .game-title {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 3.5rem;
+            color: #f8d347;
+            text-shadow: 4px 4px 0 #8b4513, 6px 6px 0 #000;
+            margin-bottom: 2rem;
+            text-align: center;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #f8d347, 0 0 20px #f8d347;
+            }
+            to {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #f8d347, 0 0 40px #f8d347;
+            }
+        }
+
+        .menu-btn {
+            background: linear-gradient(135deg, #8b4513, #a0522d);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            margin: 10px;
+            font-family: 'MedievalSharp', cursive;
+            font-size: 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 0 #5a2d0c, 0 8px 10px rgba(0, 0, 0, 0.5);
+            width: 250px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 0 #5a2d0c, 0 12px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .menu-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 3px 0 #5a2d0c, 0 5px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .menu-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .menu-btn:hover::before {
+            left: 100%;
+        }
+
+        /* Login Screen */
+        #loginScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+        }
+
+        .login-container {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 3px solid #8b4513;
+            box-shadow: 0 0 20px rgba(139, 69, 19, 0.5);
+            width: 400px;
+            max-width: 90%;
+        }
+
+        .login-title {
+            font-size: 2rem;
+            color: #f8d347;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #f8d347;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 2px solid #8b4513;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-family: 'MedievalSharp', cursive;
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #f8d347;
+            box-shadow: 0 0 10px rgba(248, 211, 71, 0.5);
+        }
+
+        .login-btn {
+            background: linear-gradient(135deg, #8b4513, #a0522d);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-family: 'MedievalSharp', cursive;
+            font-size: 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .login-btn:hover {
+            background: linear-gradient(135deg, #a0522d, #8b4513);
+        }
+
+        .back-btn {
+            background: transparent;
+            color: #f8d347;
+            border: 2px solid #8b4513;
+            padding: 8px 15px;
+            margin-top: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 5px;
+        }
+
+        .back-btn:hover {
+            background: rgba(139, 69, 19, 0.3);
+        }
+
+        /* Settings Screen */
+        #settingsScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+        }
+
+        .settings-container {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 3px solid #8b4513;
+            box-shadow: 0 0 20px rgba(139, 69, 19, 0.5);
+            width: 500px;
+            max-width: 90%;
+        }
+
+        .settings-title {
+            font-size: 2rem;
+            color: #f8d347;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .settings-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .settings-group h3 {
+            color: #f8d347;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid #8b4513;
+            padding-bottom: 5px;
+        }
+
+        .settings-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .settings-option label {
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .settings-option select, .settings-option input {
+            padding: 8px;
+            border-radius: 5px;
+            border: 2px solid #8b4513;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-family: 'MedievalSharp', cursive;
+        }
+
+        .settings-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        /* Character Selection Screen */
+        #characterScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+        }
+
+        .character-container {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 3px solid #8b4513;
+            box-shadow: 0 0 20px rgba(139, 69, 19, 0.5);
+            width: 800px;
+            max-width: 90%;
+        }
+
+        .character-title {
+            font-size: 2rem;
+            color: #f8d347;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .character-options {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .character-option {
+            width: 200px;
+            margin: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            padding: 15px;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid transparent;
+        }
+
+        .character-option:hover {
+            transform: translateY(-5px);
+            background: rgba(139, 69, 19, 0.3);
+            border-color: #8b4513;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .character-option.selected {
+            background: rgba(248, 211, 71, 0.2);
+            border-color: #f8d347;
+            box-shadow: 0 0 20px rgba(248, 211, 71, 0.5);
+        }
+
+        .character-img {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 10px;
+            background: #333;
+            border-radius: 50%;
+            border: 3px solid #8b4513;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .character-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .character-name {
+            font-size: 1.3rem;
+            color: #f8d347;
+            margin: 10px 0;
+        }
+
+        .character-desc {
+            font-size: 0.9rem;
+            color: #ccc;
+            margin-bottom: 10px;
+        }
+
+        .character-stats {
+            font-size: 0.8rem;
+            color: #aaa;
+            text-align: left;
+            margin-top: 10px;
+        }
+
+        /* Game UI Styles */
         #gameContainer {
             position: relative;
             width: 100vw;
             height: 100vh;
-            display: flex;
+            display: none;
         }
 
         #gameCanvas {
@@ -89,12 +443,38 @@
             cursor: pointer;
             transition: all 0.2s;
             border: 1px solid transparent;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .item:hover {
             background: rgba(255,215,0,0.2);
             border-color: #ffd700;
             transform: translateX(3px);
+        }
+
+        .item-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            background: #555;
+            border-radius: 3px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+        }
+
+        .item-name {
+            flex: 1;
+        }
+
+        .item-quantity {
+            background: rgba(0,0,0,0.3);
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-size: 12px;
         }
 
         .controls {
@@ -105,6 +485,7 @@
             padding: 10px;
             border-radius: 8px;
             font-size: 12px;
+            border: 2px solid #8b4513;
         }
 
         .minimap {
@@ -165,6 +546,20 @@
             border: 1px solid #666;
             font-size: 11px;
             line-height: 1.3;
+        }
+
+        .message-log::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .message-log::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.3);
+            border-radius: 4px;
+        }
+
+        .message-log::-webkit-scrollbar-thumb {
+            background: #8b4513;
+            border-radius: 4px;
         }
 
         .damage-text {
@@ -228,9 +623,455 @@
             0%, 100% { transform: scale(1); opacity: 1; }
             50% { transform: scale(1.2); opacity: 0.7; }
         }
+
+        /* Shop UI */
+        #shopUI {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            padding: 20px;
+            border-radius: 15px;
+            border: 3px solid #8b4513;
+            box-shadow: 0 0 30px rgba(0,0,0,0.8);
+            width: 600px;
+            max-width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            display: none;
+            z-index: 1000;
+        }
+
+        #shopUI h2 {
+            color: #f8d347;
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #8b4513;
+            padding-bottom: 10px;
+        }
+
+        .shop-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .shop-item {
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+            padding: 10px;
+            border: 1px solid #666;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .shop-item:hover {
+            background: rgba(139, 69, 19, 0.3);
+            border-color: #8b4513;
+            transform: translateY(-3px);
+        }
+
+        .shop-item-img {
+            width: 100%;
+            height: 100px;
+            background: #333;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+        }
+
+        .shop-item-name {
+            font-weight: bold;
+            color: #f8d347;
+            margin-bottom: 5px;
+        }
+
+        .shop-item-price {
+            color: #ffd700;
+            font-size: 0.9rem;
+        }
+
+        .shop-item-desc {
+            font-size: 0.8rem;
+            color: #aaa;
+            margin: 5px 0;
+        }
+
+        .shop-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .shop-btn {
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-family: 'MedievalSharp', cursive;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        .buy-btn {
+            background: linear-gradient(135deg, #8b4513, #a0522d);
+            color: white;
+        }
+
+        .buy-btn:hover {
+            background: linear-gradient(135deg, #a0522d, #8b4513);
+        }
+
+        .close-shop {
+            background: transparent;
+            border: 1px solid #8b4513;
+            color: #f8d347;
+        }
+
+        .close-shop:hover {
+            background: rgba(139, 69, 19, 0.3);
+        }
+
+        /* Quest UI */
+        #questUI {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            padding: 20px;
+            border-radius: 15px;
+            border: 3px solid #8b4513;
+            box-shadow: 0 0 30px rgba(0,0,0,0.8);
+            width: 500px;
+            max-width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            display: none;
+            z-index: 1000;
+        }
+
+        #questUI h2 {
+            color: #f8d347;
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #8b4513;
+            padding-bottom: 10px;
+        }
+
+        .quest-list {
+            margin-bottom: 20px;
+        }
+
+        .quest-item {
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #666;
+        }
+
+        .quest-item.active {
+            border-color: #f8d347;
+            background: rgba(248, 211, 71, 0.1);
+        }
+
+        .quest-item.completed {
+            border-color: #44ff44;
+            background: rgba(68, 255, 68, 0.1);
+        }
+
+        .quest-title {
+            font-weight: bold;
+            color: #f8d347;
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .quest-status {
+            font-size: 0.8rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+
+        .quest-status.active {
+            background: #f8d347;
+            color: #000;
+        }
+
+        .quest-status.completed {
+            background: #44ff44;
+            color: #000;
+        }
+
+        .quest-desc {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .quest-progress {
+            font-size: 0.8rem;
+            color: #aaa;
+            margin-bottom: 5px;
+        }
+
+        .quest-reward {
+            font-size: 0.8rem;
+            color: #ffd700;
+        }
+
+        .quest-actions {
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        /* Game Over Screen */
+        #gameOverScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1002;
+        }
+
+        .game-over-container {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 3px solid #8b4513;
+            box-shadow: 0 0 20px rgba(139, 69, 19, 0.5);
+            width: 500px;
+            max-width: 90%;
+            text-align: center;
+        }
+
+        .game-over-title {
+            font-size: 2.5rem;
+            color: #ff4444;
+            margin-bottom: 1rem;
+        }
+
+        .game-over-stats {
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+
+        .game-over-stat {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #333;
+        }
+
+        .game-over-stat-label {
+            color: #f8d347;
+        }
+
+        .game-over-actions {
+            margin-top: 2rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .game-title {
+                font-size: 2rem;
+            }
+            
+            .menu-btn {
+                width: 200px;
+                padding: 12px 20px;
+                font-size: 1.2rem;
+            }
+            
+            #ui {
+                width: 220px;
+                font-size: 0.9rem;
+            }
+            
+            .minimap {
+                width: 100px;
+                height: 100px;
+                right: 230px;
+            }
+            
+            .combat-ui {
+                min-width: 300px;
+                padding: 10px;
+            }
+            
+            .combat-actions {
+                flex-wrap: wrap;
+            }
+            
+            .combat-btn {
+                min-width: 120px;
+                margin: 3px;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Main Menu Screen -->
+    <div id="mainMenu">
+        <div class="menu-overlay"></div>
+        <h1 class="game-title">Fantasy RPG</h1>
+        <button class="menu-btn" id="playBtn">Play Game</button>
+        <button class="menu-btn" id="settingsBtn">Settings</button>
+        <button class="menu-btn" id="creditsBtn">Credits</button>
+        <button class="menu-btn" id="exitBtn">Exit</button>
+    </div>
+
+    <!-- Login Screen -->
+    <div id="loginScreen">
+        <div class="login-container">
+            <h2 class="login-title">Adventurer's Log</h2>
+            <div class="form-group">
+                <label for="username">Your Name:</label>
+                <input type="text" id="username" class="form-control" placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+                <label for="password">Secret Code:</label>
+                <input type="password" id="password" class="form-control" placeholder="Optional password">
+            </div>
+            <button class="login-btn" id="loginBtn">Begin Adventure</button>
+            <button class="back-btn" id="backToMenuBtn">Back to Menu</button>
+        </div>
+    </div>
+
+    <!-- Settings Screen -->
+    <div id="settingsScreen">
+        <div class="settings-container">
+            <h2 class="settings-title">Game Settings</h2>
+            
+            <div class="settings-group">
+                <h3>Graphics</h3>
+                <div class="settings-option">
+                    <label for="graphicsQuality">Quality:</label>
+                    <select id="graphicsQuality">
+                        <option value="low">Low</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+                <div class="settings-option">
+                    <label for="showEffects">Show Effects:</label>
+                    <input type="checkbox" id="showEffects" checked>
+                </div>
+            </div>
+            
+            <div class="settings-group">
+                <h3>Audio</h3>
+                <div class="settings-option">
+                    <label for="musicVolume">Music Volume:</label>
+                    <input type="range" id="musicVolume" min="0" max="100" value="70">
+                </div>
+                <div class="settings-option">
+                    <label for="sfxVolume">SFX Volume:</label>
+                    <input type="range" id="sfxVolume" min="0" max="100" value="80">
+                </div>
+            </div>
+            
+            <div class="settings-group">
+                <h3>Controls</h3>
+                <div class="settings-option">
+                    <label for="keyboardLayout">Keyboard Layout:</label>
+                    <select id="keyboardLayout">
+                        <option value="wasd">WASD</option>
+                        <option value="arrows">Arrow Keys</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="settings-actions">
+                <button class="menu-btn" id="saveSettingsBtn">Save Settings</button>
+                <button class="back-btn" id="backToMenuFromSettingsBtn">Back to Menu</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Character Selection Screen -->
+    <div id="characterScreen">
+        <div class="character-container">
+            <h2 class="character-title">Choose Your Hero</h2>
+            
+            <div class="character-options">
+                <div class="character-option" data-class="warrior">
+                    <div class="character-img">
+                        <span>⚔️</span>
+                    </div>
+                    <h3 class="character-name">Warrior</h3>
+                    <p class="character-desc">A strong melee fighter with high health and attack.</p>
+                    <div class="character-stats">
+                        <div>HP: ★★★★★</div>
+                        <div>ATK: ★★★★☆</div>
+                        <div>DEF: ★★★☆☆</div>
+                        <div>SPD: ★★☆☆☆</div>
+                    </div>
+                </div>
+                
+                <div class="character-option" data-class="ranger">
+                    <div class="character-img">
+                        <span>🏹</span>
+                    </div>
+                    <h3 class="character-name">Ranger</h3>
+                    <p class="character-desc">A nimble ranged fighter with balanced stats.</p>
+                    <div class="character-stats">
+                        <div>HP: ★★★☆☆</div>
+                        <div>ATK: ★★★★☆</div>
+                        <div>DEF: ★★★☆☆</div>
+                        <div>SPD: ★★★★☆</div>
+                    </div>
+                </div>
+                
+                <div class="character-option" data-class="mage">
+                    <div class="character-img">
+                        <span>🔮</span>
+                    </div>
+                    <h3 class="character-name">Mage</h3>
+                    <p class="character-desc">A powerful spellcaster with strong magic attacks.</p>
+                    <div class="character-stats">
+                        <div>HP: ★★☆☆☆</div>
+                        <div>ATK: ★★★★★</div>
+                        <div>DEF: ★★☆☆☆</div>
+                        <div>SPD: ★★★☆☆</div>
+                    </div>
+                </div>
+                
+                <div class="character-option" data-class="rogue">
+                    <div class="character-img">
+                        <span>🗡️</span>
+                    </div>
+                    <h3 class="character-name">Rogue</h3>
+                    <p class="character-desc">A stealthy fighter with high critical hits.</p>
+                    <div class="character-stats">
+                        <div>HP: ★★★☆☆</div>
+                        <div>ATK: ★★★★☆</div>
+                        <div>DEF: ★★☆☆☆</div>
+                        <div>SPD: ★★★★★</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="character-actions">
+                <button class="menu-btn" id="selectCharacterBtn">Select Hero</button>
+                <button class="back-btn" id="backToLoginBtn">Back</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Container -->
     <div id="gameContainer">
         <canvas id="gameCanvas" width="1200" height="800"></canvas>
         
@@ -238,9 +1079,11 @@
             <div><strong>🎮 Controls:</strong></div>
             <div>WASD / Arrow Keys - Move</div>
             <div>Space - Attack nearby enemy</div>
-            <div>E - Interact</div>
+            <div>E - Interact/Open Chest</div>
             <div>I - Use potion</div>
             <div>M - Toggle minimap</div>
+            <div>Q - Open Quests</div>
+            <div>P - Open Shop</div>
         </div>
 
         <canvas id="minimap" class="minimap" width="150" height="150"></canvas>
@@ -248,7 +1091,7 @@
         <div id="ui">
             <div style="text-align: center; margin-bottom: 15px;">
                 <h2 id="playerName">Hero</h2>
-                <div>Level <span id="playerLevel">1</span></div>
+                <div>Level <span id="playerLevel">1</span> <span id="playerClass"></span></div>
                 <div>💰 <span id="playerGold">50</span> Gold</div>
             </div>
 
@@ -288,6 +1131,7 @@
             </div>
         </div>
 
+        <!-- Combat UI -->
         <div id="combatUI" class="combat-ui">
             <div><strong>⚔️ Combat!</strong></div>
             <div>Enemy: <span id="enemyName"></span></div>
@@ -300,9 +1144,65 @@
             </div>
         </div>
 
+        <!-- Level Up Notification -->
         <div id="levelUpNotification" class="level-up">
             <div>🎉 LEVEL UP! 🎉</div>
             <div id="levelUpText"></div>
+        </div>
+
+        <!-- Shop UI -->
+        <div id="shopUI">
+            <h2>Blacksmith's Shop</h2>
+            <div class="shop-items" id="shopItems">
+                <!-- Items will be added dynamically -->
+            </div>
+            <div class="shop-actions">
+                <button class="shop-btn buy-btn" id="buyItemBtn">Buy Selected</button>
+                <button class="shop-btn close-shop" id="closeShopBtn">Leave Shop</button>
+            </div>
+        </div>
+
+        <!-- Quest UI -->
+        <div id="questUI">
+            <h2>Quest Journal</h2>
+            <div class="quest-list" id="questList">
+                <!-- Quests will be added dynamically -->
+            </div>
+            <div class="quest-actions">
+                <button class="shop-btn close-shop" id="closeQuestBtn">Close Journal</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Over Screen -->
+    <div id="gameOverScreen">
+        <div class="game-over-container">
+            <h2 class="game-over-title">GAME OVER</h2>
+            <p>Your adventure has come to an end...</p>
+            
+            <div class="game-over-stats">
+                <div class="game-over-stat">
+                    <span class="game-over-stat-label">Level Reached:</span>
+                    <span id="goLevel">1</span>
+                </div>
+                <div class="game-over-stat">
+                    <span class="game-over-stat-label">Gold Collected:</span>
+                    <span id="goGold">0</span>
+                </div>
+                <div class="game-over-stat">
+                    <span class="game-over-stat-label">Enemies Defeated:</span>
+                    <span id="goEnemies">0</span>
+                </div>
+                <div class="game-over-stat">
+                    <span class="game-over-stat-label">Quests Completed:</span>
+                    <span id="goQuests">0</span>
+                </div>
+            </div>
+            
+            <div class="game-over-actions">
+                <button class="menu-btn" id="restartGameBtn">Start New Game</button>
+                <button class="back-btn" id="returnToMenuBtn">Return to Menu</button>
+            </div>
         </div>
     </div>
 
@@ -317,12 +1217,20 @@
             lastTime: 0,
             camera: { x: 0, y: 0 },
             showMinimap: true,
-            paused: false
+            paused: false,
+            settings: {
+                graphicsQuality: 'medium',
+                showEffects: true,
+                musicVolume: 70,
+                sfxVolume: 80,
+                keyboardLayout: 'wasd'
+            },
+            playerName: 'Adventurer',
+            playerClass: 'warrior',
+            gameTime: 0,
+            enemiesDefeated: 0,
+            questsCompleted: 0
         };
-
-        // Initialize canvas contexts
-        game.ctx = game.canvas.getContext('2d');
-        game.minimapCtx = game.minimapCanvas.getContext('2d');
 
         // Player object
         const player = {
@@ -350,7 +1258,68 @@
             },
             lastAttack: 0,
             inCombat: false,
-            combatTarget: null
+            combatTarget: null,
+            quests: []
+        };
+
+        // Character classes
+        const characterClasses = {
+            warrior: {
+                name: 'Warrior',
+                stats: {
+                    hp: 120,
+                    maxHp: 120,
+                    mp: 30,
+                    maxMp: 30,
+                    attack: 25,
+                    defense: 15,
+                    speed: 2.8
+                },
+                abilities: ['Berserk Rage', 'Shield Bash'],
+                color: '#8B0000'
+            },
+            ranger: {
+                name: 'Ranger',
+                stats: {
+                    hp: 90,
+                    maxHp: 90,
+                    mp: 50,
+                    maxMp: 50,
+                    attack: 22,
+                    defense: 10,
+                    speed: 3.5
+                },
+                abilities: ['Double Shot', 'Poison Arrow'],
+                color: '#556B2F'
+            },
+            mage: {
+                name: 'Mage',
+                stats: {
+                    hp: 70,
+                    maxHp: 70,
+                    mp: 80,
+                    maxMp: 80,
+                    attack: 30,
+                    defense: 5,
+                    speed: 3.0
+                },
+                abilities: ['Fireball', 'Ice Nova'],
+                color: '#4169E1'
+            },
+            rogue: {
+                name: 'Rogue',
+                stats: {
+                    hp: 85,
+                    maxHp: 85,
+                    mp: 40,
+                    maxMp: 40,
+                    attack: 24,
+                    defense: 8,
+                    speed: 4.0
+                },
+                abilities: ['Backstab', 'Smoke Bomb'],
+                color: '#4B0082'
+            }
         };
 
         // Input handling
@@ -365,6 +1334,9 @@
             rocks: [],
             enemies: [],
             items: [],
+            chests: [],
+            npcs: [],
+            shops: [],
             areas: {
                 'Forest Outskirts': { x: 0, y: 0, width: 800, height: 600 },
                 'Dark Woods': { x: 800, y: 0, width: 600, height: 800 },
@@ -405,8 +1377,213 @@
                 gold: 35,
                 color: '#556B2F',
                 speed: 1
+            },
+            skeleton: {
+                name: 'Skeleton',
+                hp: 60,
+                attack: 20,
+                defense: 10,
+                exp: 40,
+                gold: 25,
+                color: '#D3D3D3',
+                speed: 1.8
             }
         };
+
+        // Weapons and armor
+        const weapons = {
+            'Rusty Sword': { attack: 5, price: 0 },
+            'Iron Sword': { attack: 10, price: 50 },
+            'Steel Sword': { attack: 15, price: 120 },
+            'Silver Sword': { attack: 20, price: 250 },
+            'Dragon Slayer': { attack: 30, price: 500 },
+            'Wooden Bow': { attack: 8, price: 40 },
+            'Longbow': { attack: 14, price: 100 },
+            'Elven Bow': { attack: 22, price: 300 },
+            'Oak Staff': { attack: 12, price: 60 },
+            'Wizard Staff': { attack: 18, price: 180 },
+            'Staff of Power': { attack: 25, price: 400 }
+        };
+
+        const armor = {
+            'Cloth Shirt': { defense: 2, price: 0 },
+            'Leather Armor': { defense: 5, price: 40 },
+            'Chainmail': { defense: 10, price: 100 },
+            'Plate Armor': { defense: 15, price: 200 },
+            'Dragon Armor': { defense: 25, price: 450 },
+            'Rogue Cloak': { defense: 8, price: 80 },
+            'Mage Robe': { defense: 6, price: 60 }
+        };
+
+        // Quests
+        const quests = {
+            'First Steps': {
+                description: 'Defeat 5 enemies to prove your worth.',
+                objective: { type: 'kill', target: 'any', amount: 5 },
+                reward: { gold: 50, exp: 100, item: 'Iron Sword' },
+                completed: false,
+                progress: 0
+            },
+            'Goblin Menace': {
+                description: 'Clear out the goblins in the Forest Outskirts.',
+                objective: { type: 'kill', target: 'goblin', amount: 3 },
+                reward: { gold: 30, exp: 75, item: 'Health Potion' },
+                completed: false,
+                progress: 0
+            },
+            'Treasure Hunter': {
+                description: 'Find and open 3 treasure chests.',
+                objective: { type: 'chest', amount: 3 },
+                reward: { gold: 100, exp: 50 },
+                completed: false,
+                progress: 0
+            },
+            'Weapon Upgrade': {
+                description: 'Purchase your first weapon upgrade from the blacksmith.',
+                objective: { type: 'buy', itemType: 'weapon' },
+                reward: { gold: 20, exp: 30 },
+                completed: false,
+                progress: 0
+            }
+        };
+
+        // Initialize canvas contexts
+        game.ctx = game.canvas.getContext('2d');
+        game.minimapCtx = game.minimapCanvas.getContext('2d');
+
+        // Menu event listeners
+        document.getElementById('playBtn').addEventListener('click', () => {
+            document.getElementById('mainMenu').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('mainMenu').style.display = 'none';
+                document.getElementById('loginScreen').style.display = 'flex';
+            }, 500);
+        });
+
+        document.getElementById('settingsBtn').addEventListener('click', () => {
+            document.getElementById('mainMenu').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('mainMenu').style.display = 'none';
+                document.getElementById('settingsScreen').style.display = 'flex';
+                loadSettings();
+            }, 500);
+        });
+
+        document.getElementById('creditsBtn').addEventListener('click', () => {
+            alert('Fantasy RPG Adventure\nCreated by [Your Name]\n\nArt assets from:\n- OpenGameArt.org\n- Unsplash.com\n\nMusic from:\n- Incompetech.com\n\nSpecial thanks to all playtesters!');
+        });
+
+        document.getElementById('exitBtn').addEventListener('click', () => {
+            if (confirm('Are you sure you want to exit the game?')) {
+                window.close();
+            }
+        });
+
+        // Login screen events
+        document.getElementById('loginBtn').addEventListener('click', () => {
+            const username = document.getElementById('username').value.trim();
+            if (username) {
+                game.playerName = username;
+                document.getElementById('loginScreen').style.display = 'none';
+                document.getElementById('characterScreen').style.display = 'flex';
+            } else {
+                alert('Please enter your name to begin!');
+            }
+        });
+
+        document.getElementById('backToMenuBtn').addEventListener('click', () => {
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('mainMenu').style.display = 'flex';
+            setTimeout(() => {
+                document.getElementById('mainMenu').style.opacity = '1';
+            }, 10);
+        });
+
+        // Character selection events
+        const characterOptions = document.querySelectorAll('.character-option');
+        characterOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                characterOptions.forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+                game.playerClass = this.getAttribute('data-class');
+            });
+        });
+
+        // Select first character by default
+        characterOptions[0].classList.add('selected');
+        game.playerClass = characterOptions[0].getAttribute('data-class');
+
+        document.getElementById('selectCharacterBtn').addEventListener('click', () => {
+            document.getElementById('characterScreen').style.display = 'none';
+            startGame();
+        });
+
+        document.getElementById('backToLoginBtn').addEventListener('click', () => {
+            document.getElementById('characterScreen').style.display = 'none';
+            document.getElementById('loginScreen').style.display = 'flex';
+        });
+
+        // Settings screen events
+        function loadSettings() {
+            const savedSettings = localStorage.getItem('gameSettings');
+            if (savedSettings) {
+                game.settings = JSON.parse(savedSettings);
+            }
+            
+            document.getElementById('graphicsQuality').value = game.settings.graphicsQuality;
+            document.getElementById('showEffects').checked = game.settings.showEffects;
+            document.getElementById('musicVolume').value = game.settings.musicVolume;
+            document.getElementById('sfxVolume').value = game.settings.sfxVolume;
+            document.getElementById('keyboardLayout').value = game.settings.keyboardLayout;
+        }
+
+        document.getElementById('saveSettingsBtn').addEventListener('click', () => {
+            game.settings.graphicsQuality = document.getElementById('graphicsQuality').value;
+            game.settings.showEffects = document.getElementById('showEffects').checked;
+            game.settings.musicVolume = document.getElementById('musicVolume').value;
+            game.settings.sfxVolume = document.getElementById('sfxVolume').value;
+            game.settings.keyboardLayout = document.getElementById('keyboardLayout').value;
+            
+            localStorage.setItem('gameSettings', JSON.stringify(game.settings));
+            
+            alert('Settings saved successfully!');
+        });
+
+        document.getElementById('backToMenuFromSettingsBtn').addEventListener('click', () => {
+            document.getElementById('settingsScreen').style.display = 'none';
+            document.getElementById('mainMenu').style.display = 'flex';
+            setTimeout(() => {
+                document.getElementById('mainMenu').style.opacity = '1';
+            }, 10);
+        });
+
+        // Game over screen events
+        document.getElementById('restartGameBtn').addEventListener('click', () => {
+            document.getElementById('gameOverScreen').style.display = 'none';
+            resetGame();
+            startGame();
+        });
+
+        document.getElementById('returnToMenuBtn').addEventListener('click', () => {
+            document.getElementById('gameOverScreen').style.display = 'none';
+            document.getElementById('gameContainer').style.display = 'none';
+            document.getElementById('mainMenu').style.display = 'flex';
+            setTimeout(() => {
+                document.getElementById('mainMenu').style.opacity = '1';
+            }, 10);
+        });
+
+        // Shop UI events
+        document.getElementById('closeShopBtn').addEventListener('click', () => {
+            document.getElementById('shopUI').style.display = 'none';
+            game.paused = false;
+        });
+
+        // Quest UI events
+        document.getElementById('closeQuestBtn').addEventListener('click', () => {
+            document.getElementById('questUI').style.display = 'none';
+            game.paused = false;
+        });
 
         // Initialize game world
         function initWorld() {
@@ -428,6 +1605,30 @@
                 });
             }
 
+            // Generate chests
+            for (let i = 0; i < 10; i++) {
+                world.chests.push({
+                    x: Math.random() * world.width,
+                    y: Math.random() * world.height,
+                    opened: false,
+                    items: [
+                        Math.random() > 0.7 ? 'Health Potion' : 'Mana Potion',
+                        Math.random() > 0.8 ? 'Iron Sword' : null,
+                        Math.random() > 0.9 ? 'Leather Armor' : null
+                    ].filter(Boolean),
+                    gold: 10 + Math.floor(Math.random() * 40)
+                });
+            }
+
+            // Generate shops
+            world.shops.push({
+                x: 500,
+                y: 400,
+                width: 40,
+                height: 40,
+                type: 'blacksmith'
+            });
+
             // Generate enemies
             generateEnemies();
 
@@ -439,6 +1640,11 @@
                     type: Math.random() > 0.5 ? 'gold' : 'potion',
                     collected: false
                 });
+            }
+
+            // Initialize quests
+            for (const [id, quest] of Object.entries(quests)) {
+                player.quests.push({ id, ...quest });
             }
         }
 
@@ -486,6 +1692,10 @@
             } else if (e.key === ' ') {
                 e.preventDefault();
                 attackNearbyEnemy();
+            } else if (e.key.toLowerCase() === 'q' && !player.inCombat) {
+                toggleQuestUI();
+            } else if (e.key.toLowerCase() === 'p' && !player.inCombat) {
+                toggleShopUI();
             }
         });
 
@@ -500,7 +1710,7 @@
         });
 
         game.canvas.addEventListener('click', (e) => {
-            if (!player.inCombat) {
+            if (!player.inCombat && !game.paused) {
                 const worldX = mouse.x + game.camera.x;
                 const worldY = mouse.y + game.camera.y;
                 
@@ -512,19 +1722,44 @@
                         startCombat(enemy);
                     }
                 });
+                
+                // Check if clicking on chest
+                world.chests.forEach(chest => {
+                    if (!chest.opened && 
+                        worldX >= chest.x && worldX <= chest.x + 30 &&
+                        worldY >= chest.y && worldY <= chest.y + 30) {
+                        openChest(chest);
+                    }
+                });
+                
+                // Check if clicking on shop
+                world.shops.forEach(shop => {
+                    if (worldX >= shop.x && worldX <= shop.x + shop.width &&
+                        worldY >= shop.y && worldY <= shop.y + shop.height) {
+                        toggleShopUI();
+                    }
+                });
             }
         });
 
         // Game logic functions
         function updatePlayer(deltaTime) {
-            if (player.inCombat) return;
+            if (player.inCombat || game.paused) return;
 
             let dx = 0, dy = 0;
 
-            if (keys['w'] || keys['arrowup']) dy -= player.speed;
-            if (keys['s'] || keys['arrowdown']) dy += player.speed;
-            if (keys['a'] || keys['arrowleft']) dx -= player.speed;
-            if (keys['d'] || keys['arrowright']) dx += player.speed;
+            // Handle movement based on keyboard layout setting
+            if (game.settings.keyboardLayout === 'wasd') {
+                if (keys['w'] || keys['arrowup']) dy -= player.speed;
+                if (keys['s'] || keys['arrowdown']) dy += player.speed;
+                if (keys['a'] || keys['arrowleft']) dx -= player.speed;
+                if (keys['d'] || keys['arrowright']) dx += player.speed;
+            } else {
+                if (keys['arrowup']) dy -= player.speed;
+                if (keys['arrowdown']) dy += player.speed;
+                if (keys['arrowleft']) dx -= player.speed;
+                if (keys['arrowright']) dx += player.speed;
+            }
 
             // Diagonal movement normalization
             if (dx !== 0 && dy !== 0) {
@@ -561,11 +1796,17 @@
 
             // Collect items
             collectItems();
+            
+            // Check for nearby chests or shops
+            checkInteractables();
+            
+            // Update game time
+            game.gameTime += deltaTime;
         }
 
         function updateEnemies(deltaTime) {
             world.enemies.forEach(enemy => {
-                if (!enemy.alive || player.inCombat) return;
+                if (!enemy.alive || player.inCombat || game.paused) return;
 
                 const distToPlayer = Math.sqrt(
                     Math.pow(enemy.x - player.x, 2) + Math.pow(enemy.y - player.y, 2)
@@ -619,6 +1860,23 @@
                     return true;
                 }
             }
+            
+            // Check chest collisions
+            for (let chest of world.chests) {
+                if (!chest.opened && 
+                    x < chest.x + 30 && x + width > chest.x &&
+                    y < chest.y + 30 && y + height > chest.y) {
+                    return true;
+                }
+            }
+            
+            // Check shop collisions
+            for (let shop of world.shops) {
+                if (x < shop.x + shop.width && x + width > shop.x &&
+                    y < shop.y + shop.height && y + height > shop.y) {
+                    return true;
+                }
+            }
 
             return false;
         }
@@ -662,9 +1920,270 @@
                 }
             });
         }
+        
+        function checkInteractables() {
+            // Check if E key is pressed for interaction
+            if (keys['e'] && Date.now() - player.lastAttack > 300) {
+                player.lastAttack = Date.now();
+                
+                // Check for nearby chests
+                world.chests.forEach(chest => {
+                    if (!chest.opened && 
+                        Math.abs(chest.x - player.x) < 50 && 
+                        Math.abs(chest.y - player.y) < 50) {
+                        openChest(chest);
+                    }
+                });
+                
+                // Check for nearby shops
+                world.shops.forEach(shop => {
+                    if (Math.abs(shop.x + shop.width/2 - player.x) < 60 && 
+                        Math.abs(shop.y + shop.height/2 - player.y) < 60) {
+                        toggleShopUI();
+                    }
+                });
+            }
+        }
+        
+        function openChest(chest) {
+            if (chest.opened) return;
+            
+            chest.opened = true;
+            player.gold += chest.gold;
+            
+            let itemsFound = [];
+            chest.items.forEach(item => {
+                if (!player.inventory[item]) player.inventory[item] = 0;
+                player.inventory[item]++;
+                itemsFound.push(item);
+            });
+            
+            addMessage(`🗃️ Opened a treasure chest! Found ${chest.gold} gold${itemsFound.length ? ' and ' + itemsFound.join(', ') : ''}`);
+            showFloatingText(chest.x, chest.y, `Treasure!`, '#ffd700');
+            
+            // Update quest progress
+            updateQuestProgress('chest');
+            
+            updateUI();
+        }
+        
+        function toggleShopUI() {
+            if (game.paused && document.getElementById('shopUI').style.display === 'block') {
+                document.getElementById('shopUI').style.display = 'none';
+                game.paused = false;
+                return;
+            }
+            
+            game.paused = true;
+            document.getElementById('shopUI').style.display = 'block';
+            
+            // Populate shop items
+            const shopItemsContainer = document.getElementById('shopItems');
+            shopItemsContainer.innerHTML = '';
+            
+            // Add weapons to shop
+            Object.entries(weapons).forEach(([name, data]) => {
+                if (name !== player.weapon && name !== 'Rusty Sword') {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'shop-item';
+                    itemDiv.dataset.type = 'weapon';
+                    itemDiv.dataset.name = name;
+                    itemDiv.dataset.price = data.price;
+                    itemDiv.innerHTML = `
+                        <div class="shop-item-img">⚔️</div>
+                        <div class="shop-item-name">${name}</div>
+                        <div class="shop-item-price">${data.price} gold</div>
+                        <div class="shop-item-desc">Attack +${data.attack}</div>
+                    `;
+                    itemDiv.addEventListener('click', function() {
+                        document.querySelectorAll('.shop-item').forEach(i => i.classList.remove('selected'));
+                        this.classList.add('selected');
+                    });
+                    shopItemsContainer.appendChild(itemDiv);
+                }
+            });
+            
+            // Add armor to shop
+            Object.entries(armor).forEach(([name, data]) => {
+                if (name !== player.armor && name !== 'Cloth Shirt') {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'shop-item';
+                    itemDiv.dataset.type = 'armor';
+                    itemDiv.dataset.name = name;
+                    itemDiv.dataset.price = data.price;
+                    itemDiv.innerHTML = `
+                        <div class="shop-item-img">🛡️</div>
+                        <div class="shop-item-name">${name}</div>
+                        <div class="shop-item-price">${data.price} gold</div>
+                        <div class="shop-item-desc">Defense +${data.defense}</div>
+                    `;
+                    itemDiv.addEventListener('click', function() {
+                        document.querySelectorAll('.shop-item').forEach(i => i.classList.remove('selected'));
+                        this.classList.add('selected');
+                    });
+                    shopItemsContainer.appendChild(itemDiv);
+                }
+            });
+            
+            // Add potions to shop
+            const potions = [
+                { name: 'Health Potion', price: 20, desc: 'Restores 30-50 HP' },
+                { name: 'Mana Potion', price: 25, desc: 'Restores 20-35 MP' }
+            ];
+            
+            potions.forEach(potion => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'shop-item';
+                itemDiv.dataset.type = 'potion';
+                itemDiv.dataset.name = potion.name;
+                itemDiv.dataset.price = potion.price;
+                itemDiv.innerHTML = `
+                    <div class="shop-item-img">🧪</div>
+                    <div class="shop-item-name">${potion.name}</div>
+                    <div class="shop-item-price">${potion.price} gold</div>
+                    <div class="shop-item-desc">${potion.desc}</div>
+                `;
+                itemDiv.addEventListener('click', function() {
+                    document.querySelectorAll('.shop-item').forEach(i => i.classList.remove('selected'));
+                    this.classList.add('selected');
+                });
+                shopItemsContainer.appendChild(itemDiv);
+            });
+            
+            // Set up buy button
+            document.getElementById('buyItemBtn').onclick = function() {
+                const selected = document.querySelector('.shop-item.selected');
+                if (!selected) {
+                    addMessage('❌ Please select an item to purchase');
+                    return;
+                }
+                
+                const itemName = selected.dataset.name;
+                const itemType = selected.dataset.type;
+                const itemPrice = parseInt(selected.dataset.price);
+                
+                if (player.gold < itemPrice) {
+                    addMessage(`❌ Not enough gold to buy ${itemName}!`);
+                    return;
+                }
+                
+                player.gold -= itemPrice;
+                
+                if (itemType === 'weapon') {
+                    player.weapon = itemName;
+                    addMessage(`⚔️ Purchased ${itemName}! Equipped as your weapon.`);
+                    updateQuestProgress('buy', 'weapon');
+                } else if (itemType === 'armor') {
+                    player.armor = itemName;
+                    addMessage(`🛡️ Purchased ${itemName}! Equipped as your armor.`);
+                } else if (itemType === 'potion') {
+                    if (!player.inventory[itemName]) player.inventory[itemName] = 0;
+                    player.inventory[itemName]++;
+                    addMessage(`🧪 Purchased ${itemName}! Added to your inventory.`);
+                }
+                
+                updateUI();
+                document.getElementById('shopUI').style.display = 'none';
+                game.paused = false;
+            };
+        }
+        
+        function toggleQuestUI() {
+            if (game.paused && document.getElementById('questUI').style.display === 'block') {
+                document.getElementById('questUI').style.display = 'none';
+                game.paused = false;
+                return;
+            }
+            
+            game.paused = true;
+            document.getElementById('questUI').style.display = 'block';
+            
+            // Populate quest list
+            const questList = document.getElementById('questList');
+            questList.innerHTML = '';
+            
+            player.quests.forEach(quest => {
+                const questItem = document.createElement('div');
+                questItem.className = `quest-item ${quest.completed ? 'completed' : quest.progress > 0 ? 'active' : ''}`;
+                
+                let progressText = '';
+                if (quest.objective.type === 'kill') {
+                    const targetName = quest.objective.target === 'any' ? 'enemies' : `${quest.objective.target}s`;
+                    progressText = `Defeated ${quest.progress}/${quest.objective.amount} ${targetName}`;
+                } else if (quest.objective.type === 'chest') {
+                    progressText = `Opened ${quest.progress}/${quest.objective.amount} chests`;
+                } else if (quest.objective.type === 'buy') {
+                    progressText = quest.progress > 0 ? 'Completed!' : 'Not started';
+                }
+                
+                let rewardText = `Reward: ${quest.reward.gold} gold, ${quest.reward.exp} EXP`;
+                if (quest.reward.item) {
+                    rewardText += `, ${quest.reward.item}`;
+                }
+                
+                questItem.innerHTML = `
+                    <div class="quest-title">
+                        ${quest.id}
+                        <span class="quest-status ${quest.completed ? 'completed' : quest.progress > 0 ? 'active' : ''}">
+                            ${quest.completed ? 'Completed' : quest.progress > 0 ? 'In Progress' : 'New'}
+                        </span>
+                    </div>
+                    <div class="quest-desc">${quest.description}</div>
+                    <div class="quest-progress">${progressText}</div>
+                    <div class="quest-reward">${rewardText}</div>
+                `;
+                
+                questList.appendChild(questItem);
+            });
+        }
+        
+        function updateQuestProgress(type, target) {
+            player.quests.forEach(quest => {
+                if (quest.completed) return;
+                
+                if (type === 'kill') {
+                    if (quest.objective.type === 'kill' && 
+                        (quest.objective.target === 'any' || quest.objective.target === target)) {
+                        quest.progress++;
+                        if (quest.progress >= quest.objective.amount) {
+                            completeQuest(quest);
+                        } else {
+                            addMessage(`Quest Updated: ${quest.id} (${quest.progress}/${quest.objective.amount})`);
+                        }
+                    }
+                } else if (type === 'chest' && quest.objective.type === 'chest') {
+                    quest.progress++;
+                    if (quest.progress >= quest.objective.amount) {
+                        completeQuest(quest);
+                    } else {
+                        addMessage(`Quest Updated: ${quest.id} (${quest.progress}/${quest.objective.amount})`);
+                    }
+                } else if (type === 'buy' && quest.objective.type === 'buy' && quest.objective.itemType === target) {
+                    quest.progress = 1;
+                    completeQuest(quest);
+                }
+            });
+        }
+        
+        function completeQuest(quest) {
+            quest.completed = true;
+            player.gold += quest.reward.gold;
+            player.exp += quest.reward.exp;
+            
+            if (quest.reward.item) {
+                if (!player.inventory[quest.reward.item]) player.inventory[quest.reward.item] = 0;
+                player.inventory[quest.reward.item]++;
+            }
+            
+            addMessage(`🎉 Quest Completed: ${quest.id}! Received ${quest.reward.gold} gold and ${quest.reward.exp} EXP${quest.reward.item ? ' and ' + quest.reward.item : ''}`);
+            
+            game.questsCompleted++;
+            checkLevelUp();
+            updateUI();
+        }
 
         function attackNearbyEnemy() {
-            if (player.inCombat || Date.now() - player.lastAttack < 1000) return;
+            if (player.inCombat || Date.now() - player.lastAttack < 1000 || game.paused) return;
 
             let nearestEnemy = null;
             let nearestDistance = Infinity;
@@ -743,7 +2262,9 @@
         }
 
         function playerAttack(enemy) {
-            const damage = Math.max(1, player.attack - enemy.defense + Math.floor(Math.random() * 11) - 5);
+            const weaponBonus = weapons[player.weapon] ? weapons[player.weapon].attack : 0;
+            const baseDamage = player.attack + weaponBonus;
+            const damage = Math.max(1, baseDamage - enemy.defense + Math.floor(Math.random() * 11) - 5);
             enemy.hp -= damage;
             
             addMessage(`⚔️ You attack ${enemy.name} for ${damage} damage!`);
@@ -760,7 +2281,9 @@
 
         function playerMagic(enemy) {
             player.mp -= 15;
-            const damage = Math.max(1, Math.floor(player.attack * 1.5) - enemy.defense + Math.floor(Math.random() * 8) - 3);
+            const weaponBonus = weapons[player.weapon] ? weapons[player.weapon].attack : 0;
+            const baseDamage = Math.floor(player.attack * 1.5) + weaponBonus;
+            const damage = Math.max(1, baseDamage - enemy.defense + Math.floor(Math.random() * 8) - 3);
             enemy.hp -= damage;
             
             addMessage(`✨ You cast a spell on ${enemy.name} for ${damage} damage!`);
@@ -776,7 +2299,9 @@
         }
 
         function enemyAttack(enemy) {
-            const damage = Math.max(1, enemy.attack - player.defense + Math.floor(Math.random() * 7) - 3);
+            const armorBonus = armor[player.armor] ? armor[player.armor].defense : 0;
+            const baseDefense = player.defense + armorBonus;
+            const damage = Math.max(1, enemy.attack - baseDefense + Math.floor(Math.random() * 7) - 3);
             player.hp -= damage;
             
             addMessage(`💥 ${enemy.name} attacks you for ${damage} damage!`);
@@ -797,6 +2322,8 @@
             addMessage(`🎉 ${enemy.name} defeated! +${enemy.exp} EXP, +${enemy.gold} gold`);
             showFloatingText(enemy.x, enemy.y, `+${enemy.exp} EXP`, '#ffd700');
             
+            game.enemiesDefeated++;
+            updateQuestProgress('kill', enemy.type);
             checkLevelUp();
             endCombat();
             updateUI();
@@ -814,16 +2341,21 @@
                 player.exp -= player.expToNext;
                 player.expToNext = Math.floor(player.expToNext * 1.5);
                 
-                // Stat increases
-                const hpGain = 15 + Math.floor(Math.random() * 11);
-                const mpGain = 8 + Math.floor(Math.random() * 8);
-                const attackGain = 3 + Math.floor(Math.random() * 6);
-                const defenseGain = 2 + Math.floor(Math.random() * 4);
+                // Stat increases based on class
+                const classStats = characterClasses[game.playerClass].stats;
                 
-                player.maxHp += hpGain;
-                player.maxMp += mpGain;
-                player.attack += attackGain;
-                player.defense += defenseGain;
+                // Base stat increases
+                const hpGain = 10 + Math.floor(Math.random() * 6);
+                const mpGain = 5 + Math.floor(Math.random() * 4);
+                const attackGain = 2 + Math.floor(Math.random() * 3);
+                const defenseGain = 1 + Math.floor(Math.random() * 2);
+                
+                // Apply class bonuses
+                player.maxHp += hpGain + Math.floor(classStats.maxHp * 0.05);
+                player.maxMp += mpGain + Math.floor(classStats.maxMp * 0.05);
+                player.attack += attackGain + Math.floor(classStats.attack * 0.05);
+                player.defense += defenseGain + Math.floor(classStats.defense * 0.03);
+                player.speed = classStats.speed;
                 player.hp = player.maxHp; // Full heal
                 player.mp = player.maxMp;
                 
@@ -887,6 +2419,8 @@
         }
 
         function showFloatingText(x, y, text, color) {
+            if (!game.settings.showEffects) return;
+            
             const textElement = document.createElement('div');
             textElement.textContent = text;
             textElement.className = color.includes('44') ? 'heal-text' : 'damage-text';
@@ -908,8 +2442,63 @@
 
         function gameOver() {
             addMessage('💀 GAME OVER! You have been defeated...');
-            alert(`Game Over!\nFinal Level: ${player.level}\nFinal Gold: ${player.gold}\n\nRefresh to play again!`);
-            game.running = false;
+            
+            // Update game over screen stats
+            document.getElementById('goLevel').textContent = player.level;
+            document.getElementById('goGold').textContent = player.gold;
+            document.getElementById('goEnemies').textContent = game.enemiesDefeated;
+            document.getElementById('goQuests').textContent = game.questsCompleted;
+            
+            // Show game over screen
+            document.getElementById('gameOverScreen').style.display = 'flex';
+            game.paused = true;
+        }
+        
+        function resetGame() {
+            // Reset player stats
+            player.x = 400;
+            player.y = 300;
+            player.hp = 100;
+            player.maxHp = 100;
+            player.mp = 50;
+            player.maxMp = 50;
+            player.level = 1;
+            player.exp = 0;
+            player.expToNext = 100;
+            player.gold = 50;
+            player.attack = 20;
+            player.defense = 10;
+            player.weapon = 'Rusty Sword';
+            player.armor = 'Cloth Shirt';
+            player.inventory = {
+                'Health Potion': 3,
+                'Mana Potion': 2
+            };
+            player.lastAttack = 0;
+            player.inCombat = false;
+            player.combatTarget = null;
+            
+            // Reset game stats
+            game.enemiesDefeated = 0;
+            game.questsCompleted = 0;
+            game.gameTime = 0;
+            
+            // Reset camera
+            game.camera = { x: 0, y: 0 };
+            
+            // Reset world
+            world.currentArea = 'Forest Outskirts';
+            world.items.forEach(item => item.collected = false);
+            world.chests.forEach(chest => chest.opened = false);
+            
+            // Reset enemies
+            generateEnemies();
+            
+            // Reset quests
+            player.quests = [];
+            for (const [id, quest] of Object.entries(quests)) {
+                player.quests.push({ id, ...JSON.parse(JSON.stringify(quest)) });
+            }
         }
 
         function addMessage(message) {
@@ -927,7 +2516,9 @@
 
         function updateUI() {
             // Update player stats
+            document.getElementById('playerName').textContent = game.playerName;
             document.getElementById('playerLevel').textContent = player.level;
+            document.getElementById('playerClass').textContent = characterClasses[game.playerClass].name;
             document.getElementById('playerGold').textContent = player.gold;
             
             // Update bars
@@ -946,8 +2537,8 @@
             // Update equipment
             document.getElementById('weaponName').textContent = player.weapon;
             document.getElementById('armorName').textContent = player.armor;
-            document.getElementById('attackStat').textContent = player.attack;
-            document.getElementById('defenseStat').textContent = player.defense;
+            document.getElementById('attackStat').textContent = player.attack + (weapons[player.weapon] ? weapons[player.weapon].attack : 0);
+            document.getElementById('defenseStat').textContent = player.defense + (armor[player.armor] ? armor[player.armor].defense : 0);
             
             // Update inventory
             const inventoryList = document.getElementById('inventoryList');
@@ -956,8 +2547,31 @@
             for (let [item, quantity] of Object.entries(player.inventory)) {
                 const itemDiv = document.createElement('div');
                 itemDiv.className = 'item';
-                itemDiv.textContent = `${item} x${quantity}`;
-                itemDiv.onclick = () => usePotion(item);
+                
+                const icon = document.createElement('div');
+                icon.className = 'item-icon';
+                icon.textContent = item.includes('Potion') ? '🧪' : item.includes('Sword') ? '⚔️' : item.includes('Armor') ? '🛡️' : '✨';
+                
+                const name = document.createElement('div');
+                name.className = 'item-name';
+                name.textContent = item;
+                
+                const qty = document.createElement('div');
+                qty.className = 'item-quantity';
+                qty.textContent = `x${quantity}`;
+                
+                itemDiv.appendChild(icon);
+                itemDiv.appendChild(name);
+                itemDiv.appendChild(qty);
+                
+                itemDiv.onclick = () => {
+                    if (item.includes('Potion')) {
+                        usePotion(item);
+                    } else {
+                        addMessage(`ℹ️ ${item} must be equipped at a shop`);
+                    }
+                };
+                
                 inventoryList.appendChild(itemDiv);
             }
             
@@ -972,12 +2586,14 @@
             game.ctx.fillStyle = '#2d5016';
             game.ctx.fillRect(0, 0, game.canvas.width, game.canvas.height);
 
-            // Draw grass pattern
-            game.ctx.fillStyle = '#3d6b1a';
-            for (let x = 0; x < game.canvas.width; x += 40) {
-                for (let y = 0; y < game.canvas.height; y += 40) {
-                    if ((x + y) % 80 === 0) {
-                        game.ctx.fillRect(x, y, 20, 20);
+            // Draw grass pattern (only for higher quality settings)
+            if (game.settings.graphicsQuality !== 'low') {
+                game.ctx.fillStyle = '#3d6b1a';
+                for (let x = 0; x < game.canvas.width; x += 40) {
+                    for (let y = 0; y < game.canvas.height; y += 40) {
+                        if ((x + y) % 80 === 0) {
+                            game.ctx.fillRect(x, y, 20, 20);
+                        }
                     }
                 }
             }
@@ -986,6 +2602,8 @@
             drawTrees();
             drawRocks();
             drawItems();
+            drawChests();
+            drawShops();
             drawEnemies();
             drawPlayer();
             
@@ -999,7 +2617,6 @@
         }
 
         function drawTrees() {
-            game.ctx.fillStyle = '#228B22';
             world.trees.forEach(tree => {
                 const screenX = tree.x - game.camera.x;
                 const screenY = tree.y - game.camera.y;
@@ -1027,7 +2644,6 @@
         }
 
         function drawRocks() {
-            game.ctx.fillStyle = '#696969';
             world.rocks.forEach(rock => {
                 const screenX = rock.x - game.camera.x;
                 const screenY = rock.y - game.camera.y;
@@ -1075,6 +2691,80 @@
                         
                         game.ctx.fillStyle = '#8B008B';
                         game.ctx.fillRect(screenX - 4, screenY - 2, 8, 8);
+                    }
+                }
+            });
+        }
+        
+        function drawChests() {
+            world.chests.forEach(chest => {
+                if (chest.opened) return;
+                
+                const screenX = chest.x - game.camera.x;
+                const screenY = chest.y - game.camera.y;
+                
+                if (screenX > -30 && screenX < game.canvas.width + 30 &&
+                    screenY > -30 && screenY < game.canvas.height + 30) {
+                    
+                    // Chest base
+                    game.ctx.fillStyle = '#8B4513';
+                    game.ctx.fillRect(screenX, screenY + 10, 30, 20);
+                    
+                    // Chest top
+                    game.ctx.fillStyle = '#A0522D';
+                    game.ctx.fillRect(screenX, screenY, 30, 10);
+                    
+                    // Chest details
+                    game.ctx.fillStyle = '#FFD700';
+                    game.ctx.fillRect(screenX + 5, screenY + 3, 20, 4);
+                    game.ctx.fillRect(screenX + 13, screenY + 13, 4, 8);
+                    
+                    // Chest highlight
+                    if (Math.abs(chest.x - player.x) < 50 && Math.abs(chest.y - player.y) < 50) {
+                        game.ctx.strokeStyle = '#FFD700';
+                        game.ctx.lineWidth = 2;
+                        game.ctx.strokeRect(screenX - 2, screenY - 2, 34, 34);
+                    }
+                }
+            });
+        }
+        
+        function drawShops() {
+            world.shops.forEach(shop => {
+                const screenX = shop.x - game.camera.x;
+                const screenY = shop.y - game.camera.y;
+                
+                if (screenX > -shop.width && screenX < game.canvas.width + shop.width &&
+                    screenY > -shop.height && screenY < game.canvas.height + shop.height) {
+                    
+                    // Shop building
+                    game.ctx.fillStyle = '#8B4513';
+                    game.ctx.fillRect(screenX, screenY, shop.width, shop.height);
+                    
+                    // Shop roof
+                    game.ctx.fillStyle = '#A0522D';
+                    game.ctx.beginPath();
+                    game.ctx.moveTo(screenX - 5, screenY);
+                    game.ctx.lineTo(screenX + shop.width/2, screenY - 15);
+                    game.ctx.lineTo(screenX + shop.width + 5, screenY);
+                    game.ctx.closePath();
+                    game.ctx.fill();
+                    
+                    // Shop sign
+                    game.ctx.fillStyle = '#FFD700';
+                    game.ctx.fillRect(screenX + shop.width/2 - 10, screenY - 25, 20, 10);
+                    game.ctx.fillStyle = '#000';
+                    game.ctx.font = 'bold 10px Arial';
+                    game.ctx.textAlign = 'center';
+                    game.ctx.fillText('SHOP', screenX + shop.width/2, screenY - 18);
+                    game.ctx.textAlign = 'left';
+                    
+                    // Shop highlight
+                    if (Math.abs(shop.x + shop.width/2 - player.x) < 60 && 
+                        Math.abs(shop.y + shop.height/2 - player.y) < 60) {
+                        game.ctx.strokeStyle = '#FFD700';
+                        game.ctx.lineWidth = 2;
+                        game.ctx.strokeRect(screenX - 5, screenY - 5, shop.width + 10, shop.height + 10);
                     }
                 }
             });
@@ -1131,7 +2821,7 @@
             game.ctx.fill();
             
             // Player body
-            game.ctx.fillStyle = player.color;
+            game.ctx.fillStyle = characterClasses[game.playerClass].color;
             game.ctx.fillRect(screenX, screenY, player.width, player.height);
             
             // Player face
@@ -1145,8 +2835,25 @@
             
             // Player weapon
             game.ctx.fillStyle = '#C0C0C0';
-            game.ctx.fillRect(screenX + 25, screenY + 10, 8, 2);
-            game.ctx.fillRect(screenX + 30, screenY + 5, 2, 12);
+            if (game.playerClass === 'warrior' || game.playerClass === 'rogue') {
+                game.ctx.fillRect(screenX + 25, screenY + 10, 8, 2);
+                game.ctx.fillRect(screenX + 30, screenY + 5, 2, 12);
+            } else if (game.playerClass === 'ranger') {
+                game.ctx.beginPath();
+                game.ctx.moveTo(screenX + 25, screenY + 15);
+                game.ctx.lineTo(screenX + 35, screenY + 5);
+                game.ctx.lineTo(screenX + 35, screenY + 10);
+                game.ctx.closePath();
+                game.ctx.fill();
+            } else if (game.playerClass === 'mage') {
+                game.ctx.beginPath();
+                game.ctx.arc(screenX + 30, screenY + 10, 5, 0, Math.PI * 2);
+                game.ctx.fill();
+                game.ctx.fillStyle = '#4169E1';
+                game.ctx.beginPath();
+                game.ctx.arc(screenX + 30, screenY + 10, 3, 0, Math.PI * 2);
+                game.ctx.fill();
+            }
             
             // Level indicator
             game.ctx.fillStyle = '#FFD700';
@@ -1221,8 +2928,30 @@
                 }
             });
             
+            // Draw chests
+            game.minimapCtx.fillStyle = '#8B4513';
+            world.chests.forEach(chest => {
+                if (!chest.opened) {
+                    game.minimapCtx.fillRect(
+                        chest.x * minimapScale - 1,
+                        chest.y * minimapScale - 1,
+                        2, 2
+                    );
+                }
+            });
+            
+            // Draw shops
+            game.minimapCtx.fillStyle = '#FFD700';
+            world.shops.forEach(shop => {
+                game.minimapCtx.fillRect(
+                    shop.x * minimapScale - 1,
+                    shop.y * minimapScale - 1,
+                    2, 2
+                );
+            });
+            
             // Draw player
-            game.minimapCtx.fillStyle = '#4a90e2';
+            game.minimapCtx.fillStyle = characterClasses[game.playerClass].color;
             game.minimapCtx.fillRect(
                 player.x * minimapScale - 2,
                 player.y * minimapScale - 2,
@@ -1261,18 +2990,49 @@
         function startGame() {
             console.log('🎮 Starting 2D Fantasy RPG...');
             
+            // Set player stats based on class
+            const classStats = characterClasses[game.playerClass].stats;
+            player.hp = classStats.hp;
+            player.maxHp = classStats.maxHp;
+            player.mp = classStats.mp;
+            player.maxMp = classStats.maxMp;
+            player.attack = classStats.attack;
+            player.defense = classStats.defense;
+            player.speed = classStats.speed;
+            player.color = characterClasses[game.playerClass].color;
+            
+            // Initialize world
             initWorld();
             updateUI();
-            addMessage('🌟 Welcome to the Fantasy RPG Adventure!');
+            
+            // Show welcome messages
+            addMessage(`🌟 Welcome to the Fantasy RPG Adventure, ${game.playerName}!`);
+            addMessage(`🏆 You are a ${characterClasses[game.playerClass].name}`);
             addMessage('🎯 Use WASD to move, Space to attack, I for potions');
-            addMessage('📍 Click on enemies to start combat');
+            addMessage('📍 Click on enemies to start combat or press Space');
+            addMessage('🗺️ Press M to toggle minimap, Q for quests, S for shop');
+            
+            // Show initial quest
+            addMessage(`📜 New Quest: ${player.quests[0].id} - ${player.quests[0].description}`);
+            
+            // Show game container
+            document.getElementById('gameContainer').style.display = 'flex';
             
             // Start the game loop
             requestAnimationFrame(gameLoop);
         }
 
         // Start the game when page loads
-        window.addEventListener('load', startGame);
+        window.addEventListener('load', () => {
+            // Load settings from localStorage
+            const savedSettings = localStorage.getItem('gameSettings');
+            if (savedSettings) {
+                game.settings = JSON.parse(savedSettings);
+            }
+            
+            // Show main menu
+            document.getElementById('mainMenu').style.display = 'flex';
+        });
     </script>
 </body>
 </html>
