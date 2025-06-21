@@ -6,12 +6,12 @@
     <title>Fantasy RPG Adventure</title>
     <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
+        /* Your existing CSS styles here */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'MedievalSharp', cursive;
             background: #000;
@@ -20,7 +20,6 @@
             user-select: none;
             height: 100vh;
         }
-
         /* Main Menu Styles */
         #mainMenu {
             position: fixed;
@@ -37,7 +36,6 @@
             z-index: 1000;
             transition: opacity 0.5s;
         }
-
         .menu-overlay {
             position: absolute;
             top: 0;
@@ -47,7 +45,6 @@
             background: rgba(0, 0, 0, 0.7);
             z-index: -1;
         }
-
         .game-title {
             font-family: 'Press Start 2P', cursive;
             font-size: 3.5rem;
@@ -57,7 +54,6 @@
             text-align: center;
             animation: glow 2s infinite alternate;
         }
-
         @keyframes glow {
             from {
                 text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #f8d347, 0 0 20px #f8d347;
@@ -66,7 +62,6 @@
                 text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #f8d347, 0 0 40px #f8d347;
             }
         }
-
         .menu-btn {
             background: linear-gradient(135deg, #8b4513, #a0522d);
             color: white;
@@ -84,17 +79,14 @@
             position: relative;
             overflow: hidden;
         }
-
         .menu-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 0 #5a2d0c, 0 12px 15px rgba(0, 0, 0, 0.5);
         }
-
         .menu-btn:active {
             transform: translateY(2px);
             box-shadow: 0 3px 0 #5a2d0c, 0 5px 8px rgba(0, 0, 0, 0.5);
         }
-
         .menu-btn::before {
             content: '';
             position: absolute;
@@ -105,11 +97,9 @@
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             transition: 0.5s;
         }
-
         .menu-btn:hover::before {
             left: 100%;
         }
-
         /* Login Screen */
         #loginScreen {
             position: fixed;
@@ -124,7 +114,6 @@
             align-items: center;
             z-index: 1001;
         }
-
         .login-container {
             background: linear-gradient(135deg, #1a1a2e, #16213e);
             padding: 2rem;
@@ -134,24 +123,20 @@
             width: 400px;
             max-width: 90%;
         }
-
         .login-title {
             font-size: 2rem;
             color: #f8d347;
             margin-bottom: 1.5rem;
             text-align: center;
         }
-
         .form-group {
             margin-bottom: 1.5rem;
         }
-
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
             color: #f8d347;
         }
-
         .form-control {
             width: 100%;
             padding: 10px;
@@ -162,13 +147,11 @@
             font-family: 'MedievalSharp', cursive;
             font-size: 1rem;
         }
-
         .form-control:focus {
             outline: none;
             border-color: #f8d347;
             box-shadow: 0 0 10px rgba(248, 211, 71, 0.5);
         }
-
         .login-btn {
             background: linear-gradient(135deg, #8b4513, #a0522d);
             color: white;
@@ -182,11 +165,9 @@
             width: 100%;
             margin-top: 1rem;
         }
-
         .login-btn:hover {
             background: linear-gradient(135deg, #a0522d, #8b4513);
         }
-
         .back-btn {
             background: transparent;
             color: #f8d347;
@@ -197,11 +178,9 @@
             transition: all 0.3s;
             border-radius: 5px;
         }
-
         .back-btn:hover {
             background: rgba(139, 69, 19, 0.3);
         }
-
         /* Settings Screen */
         #settingsScreen {
             position: fixed;
@@ -216,7 +195,6 @@
             align-items: center;
             z-index: 1001;
         }
-
         .settings-container {
             background: linear-gradient(135deg, #1a1a2e, #16213e);
             padding: 2rem;
@@ -226,37 +204,31 @@
             width: 500px;
             max-width: 90%;
         }
-
         .settings-title {
             font-size: 2rem;
             color: #f8d347;
             margin-bottom: 1.5rem;
             text-align: center;
         }
-
         .settings-group {
             margin-bottom: 1.5rem;
         }
-
         .settings-group h3 {
             color: #f8d347;
             margin-bottom: 0.5rem;
             border-bottom: 1px solid #8b4513;
             padding-bottom: 5px;
         }
-
         .settings-option {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin: 10px 0;
         }
-
         .settings-option label {
             color: white;
             font-size: 1.1rem;
         }
-
         .settings-option select, .settings-option input {
             padding: 8px;
             border-radius: 5px;
@@ -265,13 +237,11 @@
             color: white;
             font-family: 'MedievalSharp', cursive;
         }
-
         .settings-actions {
             display: flex;
             justify-content: space-between;
             margin-top: 2rem;
         }
-
         /* Character Selection Screen */
         #characterScreen {
             position: fixed;
@@ -286,7 +256,6 @@
             align-items: center;
             z-index: 1001;
         }
-
         .character-container {
             background: linear-gradient(135deg, #1a1a2e, #16213e);
             padding: 2rem;
@@ -296,21 +265,18 @@
             width: 800px;
             max-width: 90%;
         }
-
         .character-title {
             font-size: 2rem;
             color: #f8d347;
             margin-bottom: 1.5rem;
             text-align: center;
         }
-
         .character-options {
             display: flex;
             justify-content: space-around;
             flex-wrap: wrap;
             margin: 2rem 0;
         }
-
         .character-option {
             width: 200px;
             margin: 10px;
@@ -322,20 +288,17 @@
             background: rgba(0, 0, 0, 0.3);
             border: 2px solid transparent;
         }
-
         .character-option:hover {
             transform: translateY(-5px);
             background: rgba(139, 69, 19, 0.3);
             border-color: #8b4513;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
-
         .character-option.selected {
             background: rgba(248, 211, 71, 0.2);
             border-color: #f8d347;
             box-shadow: 0 0 20px rgba(248, 211, 71, 0.5);
         }
-
         .character-img {
             width: 120px;
             height: 120px;
@@ -346,32 +309,27 @@
             overflow: hidden;
             position: relative;
         }
-
         .character-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-
         .character-name {
             font-size: 1.3rem;
             color: #f8d347;
             margin: 10px 0;
         }
-
         .character-desc {
             font-size: 0.9rem;
             color: #ccc;
             margin-bottom: 10px;
         }
-
         .character-stats {
             font-size: 0.8rem;
             color: #aaa;
             text-align: left;
             margin-top: 10px;
         }
-
         /* Game UI Styles */
         #gameContainer {
             position: relative;
@@ -379,14 +337,12 @@
             height: 100vh;
             display: none;
         }
-
         #gameCanvas {
             background: linear-gradient(45deg, #2d5016, #3d6b1a);
             border: 3px solid #8b4513;
             flex: 1;
             cursor: crosshair;
         }
-
         #ui {
             width: 280px;
             background: linear-gradient(135deg, #0f0f23, #1a1a2e);
@@ -395,7 +351,6 @@
             overflow-y: auto;
             box-shadow: -5px 0 15px rgba(0,0,0,0.5);
         }
-
         .stat-bar {
             margin: 8px 0;
             position: relative;
@@ -405,11 +360,9 @@
             border: 2px solid #666;
             overflow: hidden;
         }
-
         .hp-bar { background: linear-gradient(90deg, #8b0000, #ff0000); }
         .mp-bar { background: linear-gradient(90deg, #000080, #4169e1); }
         .exp-bar { background: linear-gradient(90deg, #b8860b, #ffd700); }
-
         .stat-text {
             position: absolute;
             top: 50%;
@@ -420,7 +373,6 @@
             text-shadow: 1px 1px 2px black;
             z-index: 2;
         }
-
         .inventory {
             background: rgba(0,0,0,0.3);
             border-radius: 8px;
@@ -428,13 +380,11 @@
             margin: 10px 0;
             border: 1px solid #666;
         }
-
         .inventory h3 {
             color: #ffd700;
             margin-bottom: 8px;
             text-align: center;
         }
-
         .item {
             background: rgba(255,255,255,0.1);
             margin: 3px 0;
@@ -447,13 +397,11 @@
             justify-content: space-between;
             align-items: center;
         }
-
         .item:hover {
             background: rgba(255,215,0,0.2);
             border-color: #ffd700;
             transform: translateX(3px);
         }
-
         .item-icon {
             width: 20px;
             height: 20px;
@@ -465,18 +413,15 @@
             align-items: center;
             font-size: 12px;
         }
-
         .item-name {
             flex: 1;
         }
-
         .item-quantity {
             background: rgba(0,0,0,0.3);
             padding: 2px 6px;
             border-radius: 10px;
             font-size: 12px;
         }
-
         .controls {
             position: absolute;
             top: 10px;
@@ -487,7 +432,6 @@
             font-size: 12px;
             border: 2px solid #8b4513;
         }
-
         .minimap {
             position: absolute;
             top: 10px;
@@ -498,7 +442,6 @@
             border: 2px solid #666;
             border-radius: 8px;
         }
-
         .combat-ui {
             position: absolute;
             bottom: 10px;
@@ -511,13 +454,11 @@
             display: none;
             min-width: 400px;
         }
-
         .combat-actions {
             display: flex;
             gap: 10px;
             margin-top: 10px;
         }
-
         .combat-btn {
             flex: 1;
             padding: 8px;
@@ -529,13 +470,11 @@
             transition: all 0.2s;
             font-family: inherit;
         }
-
         .combat-btn:hover {
             background: linear-gradient(135deg, #666, #888);
             border-color: #aaa;
             transform: translateY(-2px);
         }
-
         .message-log {
             height: 120px;
             overflow-y: auto;
@@ -547,21 +486,17 @@
             font-size: 11px;
             line-height: 1.3;
         }
-
         .message-log::-webkit-scrollbar {
             width: 8px;
         }
-
         .message-log::-webkit-scrollbar-track {
             background: rgba(0,0,0,0.3);
             border-radius: 4px;
         }
-
         .message-log::-webkit-scrollbar-thumb {
             background: #8b4513;
             border-radius: 4px;
         }
-
         .damage-text {
             position: absolute;
             color: #ff4444;
@@ -571,7 +506,6 @@
             pointer-events: none;
             z-index: 1000;
         }
-
         .heal-text {
             position: absolute;
             color: #44ff44;
@@ -581,16 +515,13 @@
             pointer-events: none;
             z-index: 1000;
         }
-
         @keyframes fadeUp {
             0% { opacity: 1; transform: translateY(0); }
             100% { opacity: 0; transform: translateY(-30px); }
         }
-
         .fade-up {
             animation: fadeUp 1.5s ease-out forwards;
         }
-
         .level-up {
             position: absolute;
             top: 50%;
@@ -608,7 +539,6 @@
             z-index: 2000;
             display: none;
         }
-
         .quest-marker {
             position: absolute;
             width: 20px;
@@ -618,12 +548,10 @@
             border: 2px solid #b8860b;
             animation: pulse 2s infinite;
         }
-
         @keyframes pulse {
             0%, 100% { transform: scale(1); opacity: 1; }
             50% { transform: scale(1.2); opacity: 0.7; }
         }
-
         /* Shop UI */
         #shopUI {
             position: absolute;
@@ -642,7 +570,6 @@
             display: none;
             z-index: 1000;
         }
-
         #shopUI h2 {
             color: #f8d347;
             text-align: center;
@@ -650,13 +577,11 @@
             border-bottom: 2px solid #8b4513;
             padding-bottom: 10px;
         }
-
         .shop-items {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
             gap: 15px;
         }
-
         .shop-item {
             background: rgba(0,0,0,0.3);
             border-radius: 8px;
@@ -665,13 +590,11 @@
             transition: all 0.2s;
             cursor: pointer;
         }
-
         .shop-item:hover {
             background: rgba(139, 69, 19, 0.3);
             border-color: #8b4513;
             transform: translateY(-3px);
         }
-
         .shop-item-img {
             width: 100%;
             height: 100px;
@@ -683,30 +606,25 @@
             align-items: center;
             font-size: 2rem;
         }
-
         .shop-item-name {
             font-weight: bold;
             color: #f8d347;
             margin-bottom: 5px;
         }
-
         .shop-item-price {
             color: #ffd700;
             font-size: 0.9rem;
         }
-
         .shop-item-desc {
             font-size: 0.8rem;
             color: #aaa;
             margin: 5px 0;
         }
-
         .shop-actions {
             display: flex;
             justify-content: space-between;
             margin-top: 20px;
         }
-
         .shop-btn {
             padding: 10px 20px;
             border-radius: 5px;
@@ -716,26 +634,21 @@
             font-size: 1rem;
             transition: all 0.2s;
         }
-
         .buy-btn {
             background: linear-gradient(135deg, #8b4513, #a0522d);
             color: white;
         }
-
         .buy-btn:hover {
             background: linear-gradient(135deg, #a0522d, #8b4513);
         }
-
         .close-shop {
             background: transparent;
             border: 1px solid #8b4513;
             color: #f8d347;
         }
-
         .close-shop:hover {
             background: rgba(139, 69, 19, 0.3);
         }
-
         /* Quest UI */
         #questUI {
             position: absolute;
@@ -754,7 +667,6 @@
             display: none;
             z-index: 1000;
         }
-
         #questUI h2 {
             color: #f8d347;
             text-align: center;
@@ -762,11 +674,9 @@
             border-bottom: 2px solid #8b4513;
             padding-bottom: 10px;
         }
-
         .quest-list {
             margin-bottom: 20px;
         }
-
         .quest-item {
             background: rgba(0,0,0,0.3);
             border-radius: 8px;
@@ -774,17 +684,14 @@
             margin-bottom: 15px;
             border: 1px solid #666;
         }
-
         .quest-item.active {
             border-color: #f8d347;
             background: rgba(248, 211, 71, 0.1);
         }
-
         .quest-item.completed {
             border-color: #44ff44;
             background: rgba(68, 255, 68, 0.1);
         }
-
         .quest-title {
             font-weight: bold;
             color: #f8d347;
@@ -792,44 +699,36 @@
             display: flex;
             justify-content: space-between;
         }
-
         .quest-status {
             font-size: 0.8rem;
             padding: 2px 8px;
             border-radius: 10px;
         }
-
         .quest-status.active {
             background: #f8d347;
             color: #000;
         }
-
         .quest-status.completed {
             background: #44ff44;
             color: #000;
         }
-
         .quest-desc {
             font-size: 0.9rem;
             margin-bottom: 10px;
         }
-
         .quest-progress {
             font-size: 0.8rem;
             color: #aaa;
             margin-bottom: 5px;
         }
-
         .quest-reward {
             font-size: 0.8rem;
             color: #ffd700;
         }
-
         .quest-actions {
             text-align: right;
             margin-top: 20px;
         }
-
         /* Game Over Screen */
         #gameOverScreen {
             position: fixed;
@@ -844,7 +743,6 @@
             align-items: center;
             z-index: 1002;
         }
-
         .game-over-container {
             background: linear-gradient(135deg, #1a1a2e, #16213e);
             padding: 2rem;
@@ -855,18 +753,15 @@
             max-width: 90%;
             text-align: center;
         }
-
         .game-over-title {
             font-size: 2.5rem;
             color: #ff4444;
             margin-bottom: 1rem;
         }
-
         .game-over-stats {
             margin: 1.5rem 0;
             text-align: left;
         }
-
         .game-over-stat {
             display: flex;
             justify-content: space-between;
@@ -874,47 +769,38 @@
             padding-bottom: 5px;
             border-bottom: 1px solid #333;
         }
-
         .game-over-stat-label {
             color: #f8d347;
         }
-
         .game-over-actions {
             margin-top: 2rem;
         }
-
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .game-title {
                 font-size: 2rem;
             }
-            
             .menu-btn {
                 width: 200px;
                 padding: 12px 20px;
                 font-size: 1.2rem;
             }
-            
             #ui {
                 width: 220px;
                 font-size: 0.9rem;
             }
-            
             .minimap {
                 width: 100px;
                 height: 100px;
                 right: 230px;
             }
-            
             .combat-ui {
                 min-width: 300px;
                 padding: 10px;
             }
-            
             .combat-actions {
                 flex-wrap: wrap;
             }
-            
             .combat-btn {
                 min-width: 120px;
                 margin: 3px;
@@ -932,7 +818,6 @@
         <button class="menu-btn" id="creditsBtn">Credits</button>
         <button class="menu-btn" id="exitBtn">Exit</button>
     </div>
-
     <!-- Login Screen -->
     <div id="loginScreen">
         <div class="login-container">
@@ -949,12 +834,10 @@
             <button class="back-btn" id="backToMenuBtn">Back to Menu</button>
         </div>
     </div>
-
     <!-- Settings Screen -->
     <div id="settingsScreen">
         <div class="settings-container">
             <h2 class="settings-title">Game Settings</h2>
-            
             <div class="settings-group">
                 <h3>Graphics</h3>
                 <div class="settings-option">
@@ -970,7 +853,6 @@
                     <input type="checkbox" id="showEffects" checked>
                 </div>
             </div>
-            
             <div class="settings-group">
                 <h3>Audio</h3>
                 <div class="settings-option">
@@ -982,7 +864,6 @@
                     <input type="range" id="sfxVolume" min="0" max="100" value="80">
                 </div>
             </div>
-            
             <div class="settings-group">
                 <h3>Controls</h3>
                 <div class="settings-option">
@@ -993,19 +874,16 @@
                     </select>
                 </div>
             </div>
-            
             <div class="settings-actions">
                 <button class="menu-btn" id="saveSettingsBtn">Save Settings</button>
                 <button class="back-btn" id="backToMenuFromSettingsBtn">Back to Menu</button>
             </div>
         </div>
     </div>
-
     <!-- Character Selection Screen -->
     <div id="characterScreen">
         <div class="character-container">
             <h2 class="character-title">Choose Your Hero</h2>
-            
             <div class="character-options">
                 <div class="character-option" data-class="warrior">
                     <div class="character-img">
@@ -1020,7 +898,6 @@
                         <div>SPD: ★★☆☆☆</div>
                     </div>
                 </div>
-                
                 <div class="character-option" data-class="ranger">
                     <div class="character-img">
                         <span>🏹</span>
@@ -1034,7 +911,6 @@
                         <div>SPD: ★★★★☆</div>
                     </div>
                 </div>
-                
                 <div class="character-option" data-class="mage">
                     <div class="character-img">
                         <span>🔮</span>
@@ -1048,7 +924,6 @@
                         <div>SPD: ★★★☆☆</div>
                     </div>
                 </div>
-                
                 <div class="character-option" data-class="rogue">
                     <div class="character-img">
                         <span>🗡️</span>
@@ -1063,18 +938,15 @@
                     </div>
                 </div>
             </div>
-            
             <div class="character-actions">
                 <button class="menu-btn" id="selectCharacterBtn">Select Hero</button>
                 <button class="back-btn" id="backToLoginBtn">Back</button>
             </div>
         </div>
     </div>
-
     <!-- Game Container -->
     <div id="gameContainer">
         <canvas id="gameCanvas" width="1200" height="800"></canvas>
-        
         <div class="controls">
             <div><strong>🎮 Controls:</strong></div>
             <div>WASD / Arrow Keys - Move</div>
@@ -1085,31 +957,25 @@
             <div>Q - Open Quests</div>
             <div>P - Open Shop</div>
         </div>
-
         <canvas id="minimap" class="minimap" width="150" height="150"></canvas>
-
         <div id="ui">
             <div style="text-align: center; margin-bottom: 15px;">
                 <h2 id="playerName">Hero</h2>
                 <div>Level <span id="playerLevel">1</span> <span id="playerClass"></span></div>
                 <div>💰 <span id="playerGold">50</span> Gold</div>
             </div>
-
             <div class="stat-bar">
                 <div id="hpBar" class="hp-bar" style="width: 100%;"></div>
                 <div class="stat-text" id="hpText">100/100 HP</div>
             </div>
-
             <div class="stat-bar">
                 <div id="mpBar" class="mp-bar" style="width: 100%;"></div>
                 <div class="stat-text" id="mpText">50/50 MP</div>
             </div>
-
             <div class="stat-bar">
                 <div id="expBar" class="exp-bar" style="width: 0%;"></div>
                 <div class="stat-text" id="expText">0/100 EXP</div>
             </div>
-
             <div class="inventory">
                 <h3>⚔️ Equipment</h3>
                 <div>Weapon: <span id="weaponName">Rusty Sword</span></div>
@@ -1117,20 +983,20 @@
                 <div>Attack: <span id="attackStat">20</span></div>
                 <div>Defense: <span id="defenseStat">10</span></div>
             </div>
-
             <div class="inventory">
                 <h3>🎒 Inventory</h3>
                 <div id="inventoryList"></div>
             </div>
-
             <div class="message-log" id="messageLog"></div>
-
             <div style="text-align: center; margin-top: 10px;">
                 <div><strong>📍 Current Area:</strong></div>
                 <div id="currentArea">Forest Outskirts</div>
             </div>
+            <div style="text-align: center; margin-top: 10px;">
+                <button class="menu-btn" id="saveGameBtn" style="width: 120px; padding: 8px; font-size: 0.9rem;">Save Game</button>
+                <button class="menu-btn" id="loadGameBtn" style="width: 120px; padding: 8px; font-size: 0.9rem; margin-left: 5px;">Load Game</button>
+            </div>
         </div>
-
         <!-- Combat UI -->
         <div id="combatUI" class="combat-ui">
             <div><strong>⚔️ Combat!</strong></div>
@@ -1140,16 +1006,16 @@
                 <button class="combat-btn" onclick="combatAction('attack')">⚔️ Attack</button>
                 <button class="combat-btn" onclick="combatAction('magic')">✨ Magic</button>
                 <button class="combat-btn" onclick="combatAction('item')">🧪 Potion</button>
+                <button class="combat-btn" onclick="useAbility('ability1')">🌟 Ability 1</button>
+                <button class="combat-btn" onclick="useAbility('ability2')">🌟 Ability 2</button>
                 <button class="combat-btn" onclick="combatAction('flee')">🏃 Flee</button>
             </div>
         </div>
-
         <!-- Level Up Notification -->
         <div id="levelUpNotification" class="level-up">
             <div>🎉 LEVEL UP! 🎉</div>
             <div id="levelUpText"></div>
         </div>
-
         <!-- Shop UI -->
         <div id="shopUI">
             <h2>Blacksmith's Shop</h2>
@@ -1161,7 +1027,6 @@
                 <button class="shop-btn close-shop" id="closeShopBtn">Leave Shop</button>
             </div>
         </div>
-
         <!-- Quest UI -->
         <div id="questUI">
             <h2>Quest Journal</h2>
@@ -1173,13 +1038,11 @@
             </div>
         </div>
     </div>
-
     <!-- Game Over Screen -->
     <div id="gameOverScreen">
         <div class="game-over-container">
             <h2 class="game-over-title">GAME OVER</h2>
             <p>Your adventure has come to an end...</p>
-            
             <div class="game-over-stats">
                 <div class="game-over-stat">
                     <span class="game-over-stat-label">Level Reached:</span>
@@ -1198,14 +1061,12 @@
                     <span id="goQuests">0</span>
                 </div>
             </div>
-            
             <div class="game-over-actions">
                 <button class="menu-btn" id="restartGameBtn">Start New Game</button>
                 <button class="back-btn" id="returnToMenuBtn">Return to Menu</button>
             </div>
         </div>
     </div>
-
     <script>
         // Game state
         const game = {
@@ -1225,6 +1086,12 @@
                 sfxVolume: 80,
                 keyboardLayout: 'wasd'
             },
+            lastEnemyRespawn: 0,
+            enemyRespawnInterval: 30000,
+            lastItemRespawn: 0,
+            itemRespawnInterval: 60000,
+            maxEnemies: 50,
+            maxItems: 30,
             playerName: 'Adventurer',
             playerClass: 'warrior',
             gameTime: 0,
@@ -1275,7 +1142,33 @@
                     defense: 15,
                     speed: 2.8
                 },
-                abilities: ['Berserk Rage', 'Shield Bash'],
+                abilities: [
+                    {
+                        name: 'Berserk Rage',
+                        description: 'Increases attack by 50% for 10 seconds but reduces defense by 20%',
+                        effect: (player) => {
+                            player.attack *= 1.5;
+                            player.defense *= 0.8;
+                            setTimeout(() => {
+                                player.attack /= 1.5;
+                                player.defense /= 0.8;
+                            }, 10000);
+                        },
+                        cost: 20
+                    },
+                    {
+                        name: 'Shield Bash',
+                        description: 'Stuns the enemy for 3 seconds and deals 20 damage',
+                        effect: (enemy) => {
+                            enemy.stunned = true;
+                            enemy.hp -= 20;
+                            setTimeout(() => {
+                                enemy.stunned = false;
+                            }, 3000);
+                        },
+                        cost: 15
+                    }
+                ],
                 color: '#8B0000'
             },
             ranger: {
@@ -1289,7 +1182,34 @@
                     defense: 10,
                     speed: 3.5
                 },
-                abilities: ['Double Shot', 'Poison Arrow'],
+                abilities: [
+                    {
+                        name: 'Double Shot',
+                        description: 'Fires two arrows dealing 120% of normal damage',
+                        effect: (enemy) => {
+                            const damage = player.attack * 1.2;
+                            enemy.hp -= damage;
+                        },
+                        cost: 25
+                    },
+                    {
+                        name: 'Poison Arrow',
+                        description: 'Poisons the enemy, dealing 5 damage per second for 10 seconds',
+                        effect: (enemy) => {
+                            enemy.poisoned = true;
+                            const poisonInterval = setInterval(() => {
+                                enemy.hp -= 5;
+                                if (enemy.hp <= 0 || !enemy.poisoned) {
+                                    clearInterval(poisonInterval);
+                                }
+                            }, 1000);
+                            setTimeout(() => {
+                                enemy.poisoned = false;
+                            }, 10000);
+                        },
+                        cost: 20
+                    }
+                ],
                 color: '#556B2F'
             },
             mage: {
@@ -1303,7 +1223,24 @@
                     defense: 5,
                     speed: 3.0
                 },
-                abilities: ['Fireball', 'Ice Nova'],
+                abilities: [
+                    {
+                        name: 'Fireball',
+                        description: 'Deals 50 damage to the enemy',
+                        effect: (enemy) => {
+                            enemy.hp -= 50;
+                        },
+                        cost: 30
+                    },
+                    {
+                        name: 'Heal',
+                        description: 'Heals the player for 40 HP',
+                        effect: (player) => {
+                            player.hp = Math.min(player.maxHp, player.hp + 40);
+                        },
+                        cost: 25
+                    }
+                ],
                 color: '#4169E1'
             },
             rogue: {
@@ -1317,7 +1254,27 @@
                     defense: 8,
                     speed: 4.0
                 },
-                abilities: ['Backstab', 'Smoke Bomb'],
+                abilities: [
+                    {
+                        name: 'Backstab',
+                        description: 'Deals 300% damage if attacking from behind',
+                        effect: (enemy) => {
+                            const damage = player.attack * 3;
+                            enemy.hp -= damage;
+                        },
+                        cost: 20
+                    },
+                    {
+                        name: 'Smoke Bomb',
+                        description: 'Allows the player to flee from combat without fail',
+                        effect: (player) => {
+                            player.inCombat = false;
+                            player.combatTarget = null;
+                            document.getElementById('combatUI').style.display = 'none';
+                        },
+                        cost: 15
+                    }
+                ],
                 color: '#4B0082'
             }
         };
@@ -1328,8 +1285,8 @@
 
         // World data
         const world = {
-            width: 2000,
-            height: 1500,
+            width: 5000,
+            height: 4000,
             trees: [],
             rocks: [],
             enemies: [],
@@ -1338,10 +1295,13 @@
             npcs: [],
             shops: [],
             areas: {
-                'Forest Outskirts': { x: 0, y: 0, width: 800, height: 600 },
-                'Dark Woods': { x: 800, y: 0, width: 600, height: 800 },
-                'Ancient Cave': { x: 0, y: 600, width: 700, height: 500 },
-                'Mystic Valley': { x: 1400, y: 400, width: 600, height: 700 }
+                'Forest Outskirts': { x: 0, y: 0, width: 1200, height: 1000 },
+                'Dark Woods': { x: 1200, y: 0, width: 1500, height: 1200 },
+                'Ancient Cave': { x: 0, y: 1000, width: 1000, height: 800 },
+                'Mystic Valley': { x: 2700, y: 500, width: 1500, height: 1500 },
+                'Mountain Pass': { x: 1000, y: 1800, width: 1200, height: 1000 },
+                'Frozen Tundra': { x: 2700, y: 2000, width: 1500, height: 1200 },
+                'Infernal Wastes': { x: 4200, y: 2000, width: 1500, height: 1200 }
             },
             currentArea: 'Forest Outskirts'
         };
@@ -1387,6 +1347,36 @@
                 gold: 25,
                 color: '#D3D3D3',
                 speed: 1.8
+            },
+            superOrc: {
+                name: 'Super Orc',
+                hp: 200,
+                attack: 50,
+                defense: 30,
+                exp: 200,
+                gold: 100,
+                color: '#FF0000',
+                speed: 2.5
+            },
+            dragon: {
+                name: 'Dragon',
+                hp: 500,
+                attack: 80,
+                defense: 40,
+                exp: 500,
+                gold: 300,
+                color: '#FF4500',
+                speed: 3
+            },
+            demon: {
+                name: 'Demon',
+                hp: 300,
+                attack: 70,
+                defense: 35,
+                exp: 300,
+                gold: 200,
+                color: '#8B008B',
+                speed: 2.8
             }
         };
 
@@ -1402,7 +1392,17 @@
             'Elven Bow': { attack: 22, price: 300 },
             'Oak Staff': { attack: 12, price: 60 },
             'Wizard Staff': { attack: 18, price: 180 },
-            'Staff of Power': { attack: 25, price: 400 }
+            'Staff of Power': { attack: 25, price: 400 },
+            'Excalibur': { attack: 40, price: 1000 },
+            'Giant Axe': { attack: 35, price: 800 },
+            'Assassin Daggers': { attack: 28, price: 700 },
+            'Phoenix Bow': { attack: 30, price: 900 },
+            'Frost Staff': { attack: 32, price: 850 },
+            'Shadow Blade': { attack: 38, price: 950 },
+            'Divine Hammer': { attack: 45, price: 1200 },
+            'Crossbow of Destruction': { attack: 36, price: 1100 },
+            'Staff of the Archmage': { attack: 42, price: 1300 },
+            'Cursed Sword': { attack: 50, price: 1500 }
         };
 
         const armor = {
@@ -1529,7 +1529,6 @@
             if (savedSettings) {
                 game.settings = JSON.parse(savedSettings);
             }
-            
             document.getElementById('graphicsQuality').value = game.settings.graphicsQuality;
             document.getElementById('showEffects').checked = game.settings.showEffects;
             document.getElementById('musicVolume').value = game.settings.musicVolume;
@@ -1543,9 +1542,7 @@
             game.settings.musicVolume = document.getElementById('musicVolume').value;
             game.settings.sfxVolume = document.getElementById('sfxVolume').value;
             game.settings.keyboardLayout = document.getElementById('keyboardLayout').value;
-            
             localStorage.setItem('gameSettings', JSON.stringify(game.settings));
-            
             alert('Settings saved successfully!');
         });
 
@@ -1585,31 +1582,35 @@
             game.paused = false;
         });
 
+        // Save/Load game events
+        document.getElementById('saveGameBtn').addEventListener('click', saveGame);
+        document.getElementById('loadGameBtn').addEventListener('click', loadGame);
+
         // Initialize game world
         function initWorld() {
-            // Generate trees
+            // Generate trees with proper distribution
             for (let i = 0; i < 150; i++) {
                 world.trees.push({
-                    x: Math.random() * world.width,
-                    y: Math.random() * world.height,
+                    x: Math.random() * (world.width - 100) + 50,
+                    y: Math.random() * (world.height - 100) + 50,
                     size: 20 + Math.random() * 30
                 });
             }
 
-            // Generate rocks
+            // Generate rocks with proper distribution
             for (let i = 0; i < 80; i++) {
                 world.rocks.push({
-                    x: Math.random() * world.width,
-                    y: Math.random() * world.height,
+                    x: Math.random() * (world.width - 100) + 50,
+                    y: Math.random() * (world.height - 100) + 50,
                     size: 15 + Math.random() * 25
                 });
             }
 
-            // Generate chests
+            // Generate chests with proper distribution
             for (let i = 0; i < 10; i++) {
                 world.chests.push({
-                    x: Math.random() * world.width,
-                    y: Math.random() * world.height,
+                    x: Math.random() * (world.width - 100) + 50,
+                    y: Math.random() * (world.height - 100) + 50,
                     opened: false,
                     items: [
                         Math.random() > 0.7 ? 'Health Potion' : 'Mana Potion',
@@ -1629,18 +1630,9 @@
                 type: 'blacksmith'
             });
 
-            // Generate enemies
+            // Generate initial enemies and items
             generateEnemies();
-
-            // Generate items
-            for (let i = 0; i < 20; i++) {
-                world.items.push({
-                    x: Math.random() * world.width,
-                    y: Math.random() * world.height,
-                    type: Math.random() > 0.5 ? 'gold' : 'potion',
-                    collected: false
-                });
-            }
+            generateItems();
 
             // Initialize quests
             for (const [id, quest] of Object.entries(quests)) {
@@ -1651,25 +1643,55 @@
         function generateEnemies() {
             world.enemies = [];
             const enemyCount = 30;
-            
-            for (let i = 0; i < enemyCount; i++) {
+            const currentEnemyCount = world.enemies.filter(e => e.alive).length;
+            const enemiesToSpawn = game.maxEnemies - currentEnemyCount;
+
+            for (let i = 0; i < enemiesToSpawn; i++) {
                 const types = Object.keys(enemyTypes);
                 const type = types[Math.floor(Math.random() * types.length)];
                 const enemyData = enemyTypes[type];
-                
+
+                // Ensure enemies spawn away from player
+                let x, y;
+                do {
+                    x = Math.random() * world.width;
+                    y = Math.random() * world.height;
+                } while (Math.abs(x - player.x) < 200 && Math.abs(y - player.y) < 200);
+
+                // Adjust stats based on area difficulty
+                let hp = enemyData.hp;
+                let attack = enemyData.attack;
+                let defense = enemyData.defense;
+                let exp = enemyData.exp;
+                let gold = enemyData.gold;
+
+                if (world.currentArea === 'Mystic Valley' || world.currentArea === 'Mountain Pass') {
+                    hp = Math.floor(hp * 1.5);
+                    attack = Math.floor(attack * 1.3);
+                    defense = Math.floor(defense * 1.2);
+                    exp = Math.floor(exp * 1.5);
+                    gold = Math.floor(gold * 1.5);
+                } else if (world.currentArea === 'Frozen Tundra' || world.currentArea === 'Infernal Wastes') {
+                    hp = Math.floor(hp * 2);
+                    attack = Math.floor(attack * 1.7);
+                    defense = Math.floor(defense * 1.5);
+                    exp = Math.floor(exp * 2);
+                    gold = Math.floor(gold * 2);
+                }
+
                 world.enemies.push({
-                    x: Math.random() * world.width,
-                    y: Math.random() * world.height,
+                    x: x,
+                    y: y,
                     width: 25,
                     height: 25,
                     type: type,
                     name: enemyData.name,
-                    hp: enemyData.hp,
-                    maxHp: enemyData.hp,
-                    attack: enemyData.attack,
-                    defense: enemyData.defense,
-                    exp: enemyData.exp,
-                    gold: enemyData.gold,
+                    hp: hp,
+                    maxHp: hp,
+                    attack: attack,
+                    defense: defense,
+                    exp: exp,
+                    gold: gold,
                     color: enemyData.color,
                     speed: enemyData.speed,
                     lastMove: 0,
@@ -1680,10 +1702,106 @@
             }
         }
 
+        function generateItems() {
+            const currentItemCount = world.items.filter(i => !i.collected).length;
+            const itemsToSpawn = game.maxItems - currentItemCount;
+
+            for (let i = 0; i < itemsToSpawn; i++) {
+                let x, y;
+                do {
+                    x = Math.random() * world.width;
+                    y = Math.random() * world.height;
+                } while (Math.abs(x - player.x) < 150 && Math.abs(y - player.y) < 150);
+
+                world.items.push({
+                    x: x,
+                    y: y,
+                    type: Math.random() > 0.5 ? 'gold' : 'potion',
+                    collected: false
+                });
+            }
+        }
+
+        // Save/Load functions
+        function saveGame() {
+            const saveData = {
+                player: {
+                    x: player.x,
+                    y: player.y,
+                    hp: player.hp,
+                    mp: player.mp,
+                    level: player.level,
+                    exp: player.exp,
+                    gold: player.gold,
+                    inventory: player.inventory,
+                    weapon: player.weapon,
+                    armor: player.armor,
+                    quests: player.quests,
+                    playerClass: game.playerClass
+                },
+                game: {
+                    currentArea: world.currentArea,
+                    enemiesDefeated: game.enemiesDefeated,
+                    questsCompleted: game.questsCompleted,
+                    gameTime: game.gameTime
+                },
+                world: {
+                    chests: world.chests.map(chest => ({
+                        x: chest.x,
+                        y: chest.y,
+                        opened: chest.opened
+                    }))
+                }
+            };
+            localStorage.setItem('fantasyRPGSave', JSON.stringify(saveData));
+            addMessage('Game saved successfully!');
+        }
+
+        function loadGame() {
+            const saveData = localStorage.getItem('fantasyRPGSave');
+            if (!saveData) {
+                addMessage('No saved game found!');
+                return false;
+            }
+            try {
+                const parsedData = JSON.parse(saveData);
+
+                // Load player data
+                player.x = parsedData.player.x;
+                player.y = parsedData.player.y;
+                player.hp = parsedData.player.hp;
+                player.mp = parsedData.player.mp;
+                player.level = parsedData.player.level;
+                player.exp = parsedData.player.exp;
+                player.gold = parsedData.player.gold;
+                player.inventory = parsedData.player.inventory;
+                player.weapon = parsedData.player.weapon;
+                player.armor = parsedData.player.armor;
+                player.quests = parsedData.player.quests;
+                game.playerClass = parsedData.player.playerClass;
+
+                // Load game data
+                world.currentArea = parsedData.game.currentArea;
+                game.enemiesDefeated = parsedData.game.enemiesDefeated;
+                game.questsCompleted = parsedData.game.questsCompleted;
+                game.gameTime = parsedData.game.gameTime;
+
+                // Load world data
+                world.chests = parsedData.world.chests;
+
+                // Update UI
+                updateUI();
+                addMessage('Game loaded successfully!');
+                return true;
+            } catch (e) {
+                addMessage('Error loading saved game!');
+                return false;
+            }
+        }
+
         // Event listeners
         document.addEventListener('keydown', (e) => {
             keys[e.key.toLowerCase()] = true;
-            
             if (e.key.toLowerCase() === 'i') {
                 usePotion('Health Potion');
             } else if (e.key.toLowerCase() === 'm') {
@@ -1713,25 +1831,25 @@
             if (!player.inCombat && !game.paused) {
                 const worldX = mouse.x + game.camera.x;
                 const worldY = mouse.y + game.camera.y;
-                
+
                 // Check if clicking on enemy
                 world.enemies.forEach(enemy => {
-                    if (enemy.alive && 
+                    if (enemy.alive &&
                         worldX >= enemy.x && worldX <= enemy.x + enemy.width &&
                         worldY >= enemy.y && worldY <= enemy.y + enemy.height) {
                         startCombat(enemy);
                     }
                 });
-                
+
                 // Check if clicking on chest
                 world.chests.forEach(chest => {
-                    if (!chest.opened && 
+                    if (!chest.opened &&
                         worldX >= chest.x && worldX <= chest.x + 30 &&
                         worldY >= chest.y && worldY <= chest.y + 30) {
                         openChest(chest);
                     }
                 });
-                
+
                 // Check if clicking on shop
                 world.shops.forEach(shop => {
                     if (worldX >= shop.x && worldX <= shop.x + shop.width &&
@@ -1796,10 +1914,10 @@
 
             // Collect items
             collectItems();
-            
+
             // Check for nearby chests or shops
             checkInteractables();
-            
+
             // Update game time
             game.gameTime += deltaTime;
         }
@@ -1837,6 +1955,7 @@
                     if (enemy.x + moveX >= 0 && enemy.x + moveX <= world.width - enemy.width) {
                         enemy.x += moveX;
                     }
+
                     if (enemy.y + moveY >= 0 && enemy.y + moveY <= world.height - enemy.height) {
                         enemy.y += moveY;
                     }
@@ -1845,14 +1964,6 @@
         }
 
         function checkCollision(x, y, width, height) {
-            // Check tree collisions
-            for (let tree of world.trees) {
-                if (x < tree.x + tree.size && x + width > tree.x &&
-                    y < tree.y + tree.size && y + height > tree.y) {
-                    return true;
-                }
-            }
-
             // Check rock collisions
             for (let rock of world.rocks) {
                 if (x < rock.x + rock.size && x + width > rock.x &&
@@ -1860,16 +1971,16 @@
                     return true;
                 }
             }
-            
+
             // Check chest collisions
             for (let chest of world.chests) {
-                if (!chest.opened && 
+                if (!chest.opened &&
                     x < chest.x + 30 && x + width > chest.x &&
                     y < chest.y + 30 && y + height > chest.y) {
                     return true;
                 }
             }
-            
+
             // Check shop collisions
             for (let shop of world.shops) {
                 if (x < shop.x + shop.width && x + width > shop.x &&
@@ -1897,12 +2008,11 @@
 
         function collectItems() {
             world.items.forEach(item => {
-                if (!item.collected && 
-                    Math.abs(item.x - player.x) < 30 && 
+                if (!item.collected &&
+                    Math.abs(item.x - player.x) < 30 &&
                     Math.abs(item.y - player.y) < 30) {
-                    
                     item.collected = true;
-                    
+
                     if (item.type === 'gold') {
                         const goldAmount = 10 + Math.floor(Math.random() * 20);
                         player.gold += goldAmount;
@@ -1915,73 +2025,65 @@
                         addMessage(`🧪 Found ${potionType}!`);
                         showFloatingText(item.x, item.y, `+${potionType}`, '#44ff44');
                     }
-                    
+
                     updateUI();
                 }
             });
         }
-        
+
         function checkInteractables() {
-            // Check if E key is pressed for interaction
             if (keys['e'] && Date.now() - player.lastAttack > 300) {
                 player.lastAttack = Date.now();
-                
-                // Check for nearby chests
+
                 world.chests.forEach(chest => {
-                    if (!chest.opened && 
-                        Math.abs(chest.x - player.x) < 50 && 
+                    if (!chest.opened &&
+                        Math.abs(chest.x - player.x) < 50 &&
                         Math.abs(chest.y - player.y) < 50) {
                         openChest(chest);
                     }
                 });
-                
-                // Check for nearby shops
+
                 world.shops.forEach(shop => {
-                    if (Math.abs(shop.x + shop.width/2 - player.x) < 60 && 
+                    if (Math.abs(shop.x + shop.width/2 - player.x) < 60 &&
                         Math.abs(shop.y + shop.height/2 - player.y) < 60) {
                         toggleShopUI();
                     }
                 });
             }
         }
-        
+
         function openChest(chest) {
             if (chest.opened) return;
-            
+
             chest.opened = true;
             player.gold += chest.gold;
-            
+
             let itemsFound = [];
             chest.items.forEach(item => {
                 if (!player.inventory[item]) player.inventory[item] = 0;
                 player.inventory[item]++;
                 itemsFound.push(item);
             });
-            
+
             addMessage(`🗃️ Opened a treasure chest! Found ${chest.gold} gold${itemsFound.length ? ' and ' + itemsFound.join(', ') : ''}`);
             showFloatingText(chest.x, chest.y, `Treasure!`, '#ffd700');
-            
-            // Update quest progress
             updateQuestProgress('chest');
-            
             updateUI();
         }
-        
+
         function toggleShopUI() {
             if (game.paused && document.getElementById('shopUI').style.display === 'block') {
                 document.getElementById('shopUI').style.display = 'none';
                 game.paused = false;
                 return;
             }
-            
+
             game.paused = true;
             document.getElementById('shopUI').style.display = 'block';
-            
-            // Populate shop items
+
             const shopItemsContainer = document.getElementById('shopItems');
             shopItemsContainer.innerHTML = '';
-            
-            // Add weapons to shop
+
             Object.entries(weapons).forEach(([name, data]) => {
                 if (name !== player.weapon && name !== 'Rusty Sword') {
                     const itemDiv = document.createElement('div');
@@ -2002,8 +2104,7 @@
                     shopItemsContainer.appendChild(itemDiv);
                 }
             });
-            
-            // Add armor to shop
+
             Object.entries(armor).forEach(([name, data]) => {
                 if (name !== player.armor && name !== 'Cloth Shirt') {
                     const itemDiv = document.createElement('div');
@@ -2024,13 +2125,12 @@
                     shopItemsContainer.appendChild(itemDiv);
                 }
             });
-            
-            // Add potions to shop
+
             const potions = [
                 { name: 'Health Potion', price: 20, desc: 'Restores 30-50 HP' },
                 { name: 'Mana Potion', price: 25, desc: 'Restores 20-35 MP' }
             ];
-            
+
             potions.forEach(potion => {
                 const itemDiv = document.createElement('div');
                 itemDiv.className = 'shop-item';
@@ -2049,26 +2149,25 @@
                 });
                 shopItemsContainer.appendChild(itemDiv);
             });
-            
-            // Set up buy button
+
             document.getElementById('buyItemBtn').onclick = function() {
                 const selected = document.querySelector('.shop-item.selected');
                 if (!selected) {
                     addMessage('❌ Please select an item to purchase');
                     return;
                 }
-                
+
                 const itemName = selected.dataset.name;
                 const itemType = selected.dataset.type;
                 const itemPrice = parseInt(selected.dataset.price);
-                
+
                 if (player.gold < itemPrice) {
                     addMessage(`❌ Not enough gold to buy ${itemName}!`);
                     return;
                 }
-                
+
                 player.gold -= itemPrice;
-                
+
                 if (itemType === 'weapon') {
                     player.weapon = itemName;
                     addMessage(`⚔️ Purchased ${itemName}! Equipped as your weapon.`);
@@ -2081,31 +2180,30 @@
                     player.inventory[itemName]++;
                     addMessage(`🧪 Purchased ${itemName}! Added to your inventory.`);
                 }
-                
+
                 updateUI();
                 document.getElementById('shopUI').style.display = 'none';
                 game.paused = false;
             };
         }
-        
+
         function toggleQuestUI() {
             if (game.paused && document.getElementById('questUI').style.display === 'block') {
                 document.getElementById('questUI').style.display = 'none';
                 game.paused = false;
                 return;
             }
-            
+
             game.paused = true;
             document.getElementById('questUI').style.display = 'block';
-            
-            // Populate quest list
+
             const questList = document.getElementById('questList');
             questList.innerHTML = '';
-            
+
             player.quests.forEach(quest => {
                 const questItem = document.createElement('div');
                 questItem.className = `quest-item ${quest.completed ? 'completed' : quest.progress > 0 ? 'active' : ''}`;
-                
+
                 let progressText = '';
                 if (quest.objective.type === 'kill') {
                     const targetName = quest.objective.target === 'any' ? 'enemies' : `${quest.objective.target}s`;
@@ -2115,12 +2213,12 @@
                 } else if (quest.objective.type === 'buy') {
                     progressText = quest.progress > 0 ? 'Completed!' : 'Not started';
                 }
-                
+
                 let rewardText = `Reward: ${quest.reward.gold} gold, ${quest.reward.exp} EXP`;
                 if (quest.reward.item) {
                     rewardText += `, ${quest.reward.item}`;
                 }
-                
+
                 questItem.innerHTML = `
                     <div class="quest-title">
                         ${quest.id}
@@ -2132,19 +2230,20 @@
                     <div class="quest-progress">${progressText}</div>
                     <div class="quest-reward">${rewardText}</div>
                 `;
-                
+
                 questList.appendChild(questItem);
             });
         }
-        
+
         function updateQuestProgress(type, target) {
             player.quests.forEach(quest => {
                 if (quest.completed) return;
-                
+
                 if (type === 'kill') {
-                    if (quest.objective.type === 'kill' && 
+                    if (quest.objective.type === 'kill' &&
                         (quest.objective.target === 'any' || quest.objective.target === target)) {
                         quest.progress++;
+
                         if (quest.progress >= quest.objective.amount) {
                             completeQuest(quest);
                         } else {
@@ -2153,6 +2252,7 @@
                     }
                 } else if (type === 'chest' && quest.objective.type === 'chest') {
                     quest.progress++;
+
                     if (quest.progress >= quest.objective.amount) {
                         completeQuest(quest);
                     } else {
@@ -2164,19 +2264,18 @@
                 }
             });
         }
-        
+
         function completeQuest(quest) {
             quest.completed = true;
             player.gold += quest.reward.gold;
             player.exp += quest.reward.exp;
-            
+
             if (quest.reward.item) {
                 if (!player.inventory[quest.reward.item]) player.inventory[quest.reward.item] = 0;
                 player.inventory[quest.reward.item]++;
             }
-            
+
             addMessage(`🎉 Quest Completed: ${quest.id}! Received ${quest.reward.gold} gold and ${quest.reward.exp} EXP${quest.reward.item ? ' and ' + quest.reward.item : ''}`);
-            
             game.questsCompleted++;
             checkLevelUp();
             updateUI();
@@ -2190,7 +2289,7 @@
 
             world.enemies.forEach(enemy => {
                 if (!enemy.alive) return;
-                
+
                 const distance = Math.sqrt(
                     Math.pow(enemy.x - player.x, 2) + Math.pow(enemy.y - player.y, 2)
                 );
@@ -2208,14 +2307,12 @@
 
         function startCombat(enemy) {
             if (player.inCombat) return;
-            
+
             player.inCombat = true;
             player.combatTarget = enemy;
-            
             document.getElementById('combatUI').style.display = 'block';
             document.getElementById('enemyName').textContent = enemy.name;
             document.getElementById('enemyHP').textContent = `${enemy.hp}/${enemy.maxHp}`;
-            
             addMessage(`⚔️ Combat started with ${enemy.name}!`);
         }
 
@@ -2261,21 +2358,44 @@
             }
         }
 
+        function useAbility(abilityIndex) {
+            if (!player.inCombat || !player.combatTarget) return;
+
+            const enemy = player.combatTarget;
+            const abilities = characterClasses[game.playerClass].abilities;
+            const ability = abilities[abilityIndex === 'ability1' ? 0 : 1];
+
+            if (player.mp < ability.cost) {
+                addMessage(`❌ Not enough MP to use ${ability.name}!`);
+                return;
+            }
+
+            player.mp -= ability.cost;
+            ability.effect(abilityIndex === 'ability1' ? enemy : player);
+            addMessage(`🌟 Used ${ability.name}!`);
+            updateUI();
+
+            // Enemy turn (if still alive)
+            if (enemy.alive && enemy.hp > 0 && !enemy.stunned) {
+                setTimeout(() => enemyAttack(enemy), 1000);
+            }
+        }
+
         function playerAttack(enemy) {
             const weaponBonus = weapons[player.weapon] ? weapons[player.weapon].attack : 0;
             const baseDamage = player.attack + weaponBonus;
             const damage = Math.max(1, baseDamage - enemy.defense + Math.floor(Math.random() * 11) - 5);
+
             enemy.hp -= damage;
-            
             addMessage(`⚔️ You attack ${enemy.name} for ${damage} damage!`);
             showFloatingText(enemy.x, enemy.y, `-${damage}`, '#ff4444');
-            
+
             if (enemy.hp <= 0) {
                 enemyDefeated(enemy);
             } else {
                 document.getElementById('enemyHP').textContent = `${enemy.hp}/${enemy.maxHp}`;
             }
-            
+
             player.lastAttack = Date.now();
         }
 
@@ -2284,17 +2404,17 @@
             const weaponBonus = weapons[player.weapon] ? weapons[player.weapon].attack : 0;
             const baseDamage = Math.floor(player.attack * 1.5) + weaponBonus;
             const damage = Math.max(1, baseDamage - enemy.defense + Math.floor(Math.random() * 8) - 3);
+
             enemy.hp -= damage;
-            
             addMessage(`✨ You cast a spell on ${enemy.name} for ${damage} damage!`);
             showFloatingText(enemy.x, enemy.y, `-${damage}`, '#8a2be2');
-            
+
             if (enemy.hp <= 0) {
                 enemyDefeated(enemy);
             } else {
                 document.getElementById('enemyHP').textContent = `${enemy.hp}/${enemy.maxHp}`;
             }
-            
+
             updateUI();
         }
 
@@ -2302,26 +2422,26 @@
             const armorBonus = armor[player.armor] ? armor[player.armor].defense : 0;
             const baseDefense = player.defense + armorBonus;
             const damage = Math.max(1, enemy.attack - baseDefense + Math.floor(Math.random() * 7) - 3);
+
             player.hp -= damage;
-            
             addMessage(`💥 ${enemy.name} attacks you for ${damage} damage!`);
             showFloatingText(player.x, player.y, `-${damage}`, '#ff4444');
-            
+
             if (player.hp <= 0) {
                 gameOver();
             }
-            
+
             updateUI();
         }
 
         function enemyDefeated(enemy) {
             enemy.alive = false;
+            enemy.respawnTime = Date.now() + 30000;
             player.exp += enemy.exp;
             player.gold += enemy.gold;
-            
+
             addMessage(`🎉 ${enemy.name} defeated! +${enemy.exp} EXP, +${enemy.gold} gold`);
             showFloatingText(enemy.x, enemy.y, `+${enemy.exp} EXP`, '#ffd700');
-            
             game.enemiesDefeated++;
             updateQuestProgress('kill', enemy.type);
             checkLevelUp();
@@ -2340,25 +2460,22 @@
                 player.level++;
                 player.exp -= player.expToNext;
                 player.expToNext = Math.floor(player.expToNext * 1.5);
-                
-                // Stat increases based on class
+
                 const classStats = characterClasses[game.playerClass].stats;
-                
-                // Base stat increases
                 const hpGain = 10 + Math.floor(Math.random() * 6);
                 const mpGain = 5 + Math.floor(Math.random() * 4);
                 const attackGain = 2 + Math.floor(Math.random() * 3);
                 const defenseGain = 1 + Math.floor(Math.random() * 2);
-                
-                // Apply class bonuses
+
                 player.maxHp += hpGain + Math.floor(classStats.maxHp * 0.05);
                 player.maxMp += mpGain + Math.floor(classStats.maxMp * 0.05);
                 player.attack += attackGain + Math.floor(classStats.attack * 0.05);
                 player.defense += defenseGain + Math.floor(classStats.defense * 0.03);
                 player.speed = classStats.speed;
-                player.hp = player.maxHp; // Full heal
+
+                player.hp = player.maxHp;
                 player.mp = player.maxMp;
-                
+
                 showLevelUp(hpGain, mpGain, attackGain, defenseGain);
                 addMessage(`🎉 LEVEL UP! You are now level ${player.level}!`);
                 updateUI();
@@ -2368,15 +2485,15 @@
         function showLevelUp(hp, mp, attack, defense) {
             const levelUpDiv = document.getElementById('levelUpNotification');
             const levelUpText = document.getElementById('levelUpText');
-            
+
             levelUpText.innerHTML = `
                 Level ${player.level}!<br>
                 HP +${hp}, MP +${mp}<br>
                 Attack +${attack}, Defense +${defense}
             `;
-            
+
             levelUpDiv.style.display = 'block';
-            
+
             setTimeout(() => {
                 levelUpDiv.style.display = 'none';
             }, 3000);
@@ -2392,7 +2509,7 @@
                 const oldHp = player.hp;
                 player.hp = Math.min(player.maxHp, player.hp + heal);
                 const actualHeal = player.hp - oldHp;
-                
+
                 if (actualHeal > 0) {
                     addMessage(`🧪 Used Health Potion! Healed ${actualHeal} HP`);
                     showFloatingText(player.x, player.y, `+${actualHeal} HP`, '#44ff44');
@@ -2402,7 +2519,7 @@
                 const oldMp = player.mp;
                 player.mp = Math.min(player.maxMp, player.mp + restore);
                 const actualRestore = player.mp - oldMp;
-                
+
                 if (actualRestore > 0) {
                     addMessage(`🔮 Used Mana Potion! Restored ${actualRestore} MP`);
                     showFloatingText(player.x, player.y, `+${actualRestore} MP`, '#4169e1');
@@ -2410,6 +2527,7 @@
             }
 
             player.inventory[type]--;
+
             if (player.inventory[type] <= 0) {
                 delete player.inventory[type];
             }
@@ -2420,16 +2538,15 @@
 
         function showFloatingText(x, y, text, color) {
             if (!game.settings.showEffects) return;
-            
+
             const textElement = document.createElement('div');
             textElement.textContent = text;
             textElement.className = color.includes('44') ? 'heal-text' : 'damage-text';
             textElement.style.color = color;
             textElement.style.left = (x - game.camera.x) + 'px';
             textElement.style.top = (y - game.camera.y) + 'px';
-            
             document.body.appendChild(textElement);
-            
+
             setTimeout(() => {
                 textElement.classList.add('fade-up');
                 setTimeout(() => {
@@ -2442,20 +2559,15 @@
 
         function gameOver() {
             addMessage('💀 GAME OVER! You have been defeated...');
-            
-            // Update game over screen stats
             document.getElementById('goLevel').textContent = player.level;
             document.getElementById('goGold').textContent = player.gold;
             document.getElementById('goEnemies').textContent = game.enemiesDefeated;
             document.getElementById('goQuests').textContent = game.questsCompleted;
-            
-            // Show game over screen
             document.getElementById('gameOverScreen').style.display = 'flex';
             game.paused = true;
         }
-        
+
         function resetGame() {
-            // Reset player stats
             player.x = 400;
             player.y = 300;
             player.hp = 100;
@@ -2477,25 +2589,16 @@
             player.lastAttack = 0;
             player.inCombat = false;
             player.combatTarget = null;
-            
-            // Reset game stats
             game.enemiesDefeated = 0;
             game.questsCompleted = 0;
             game.gameTime = 0;
-            
-            // Reset camera
             game.camera = { x: 0, y: 0 };
-            
-            // Reset world
             world.currentArea = 'Forest Outskirts';
             world.items.forEach(item => item.collected = false);
             world.chests.forEach(chest => chest.opened = false);
-            
-            // Reset enemies
             generateEnemies();
-            
-            // Reset quests
             player.quests = [];
+
             for (const [id, quest] of Object.entries(quests)) {
                 player.quests.push({ id, ...JSON.parse(JSON.stringify(quest)) });
             }
@@ -2508,62 +2611,57 @@
             messageLog.appendChild(messageDiv);
             messageLog.scrollTop = messageLog.scrollHeight;
 
-            // Keep only last 50 messages
             while (messageLog.children.length > 50) {
                 messageLog.removeChild(messageLog.firstChild);
             }
         }
 
         function updateUI() {
-            // Update player stats
             document.getElementById('playerName').textContent = game.playerName;
             document.getElementById('playerLevel').textContent = player.level;
             document.getElementById('playerClass').textContent = characterClasses[game.playerClass].name;
             document.getElementById('playerGold').textContent = player.gold;
-            
-            // Update bars
+
             const hpPercent = (player.hp / player.maxHp) * 100;
             const mpPercent = (player.mp / player.maxMp) * 100;
             const expPercent = (player.exp / player.expToNext) * 100;
-            
+
             document.getElementById('hpBar').style.width = hpPercent + '%';
             document.getElementById('mpBar').style.width = mpPercent + '%';
             document.getElementById('expBar').style.width = expPercent + '%';
-            
+
             document.getElementById('hpText').textContent = `${player.hp}/${player.maxHp} HP`;
             document.getElementById('mpText').textContent = `${player.mp}/${player.maxMp} MP`;
             document.getElementById('expText').textContent = `${player.exp}/${player.expToNext} EXP`;
-            
-            // Update equipment
+
             document.getElementById('weaponName').textContent = player.weapon;
             document.getElementById('armorName').textContent = player.armor;
             document.getElementById('attackStat').textContent = player.attack + (weapons[player.weapon] ? weapons[player.weapon].attack : 0);
             document.getElementById('defenseStat').textContent = player.defense + (armor[player.armor] ? armor[player.armor].defense : 0);
-            
-            // Update inventory
+
             const inventoryList = document.getElementById('inventoryList');
             inventoryList.innerHTML = '';
-            
+
             for (let [item, quantity] of Object.entries(player.inventory)) {
                 const itemDiv = document.createElement('div');
                 itemDiv.className = 'item';
-                
+
                 const icon = document.createElement('div');
                 icon.className = 'item-icon';
                 icon.textContent = item.includes('Potion') ? '🧪' : item.includes('Sword') ? '⚔️' : item.includes('Armor') ? '🛡️' : '✨';
-                
+
                 const name = document.createElement('div');
                 name.className = 'item-name';
                 name.textContent = item;
-                
+
                 const qty = document.createElement('div');
                 qty.className = 'item-quantity';
                 qty.textContent = `x${quantity}`;
-                
+
                 itemDiv.appendChild(icon);
                 itemDiv.appendChild(name);
                 itemDiv.appendChild(qty);
-                
+
                 itemDiv.onclick = () => {
                     if (item.includes('Potion')) {
                         usePotion(item);
@@ -2571,10 +2669,10 @@
                         addMessage(`ℹ️ ${item} must be equipped at a shop`);
                     }
                 };
-                
+
                 inventoryList.appendChild(itemDiv);
             }
-            
+
             if (Object.keys(player.inventory).length === 0) {
                 inventoryList.innerHTML = '<div style="color: #888; font-style: italic;">Empty</div>';
             }
@@ -2582,13 +2680,12 @@
 
         // Rendering functions
         function render() {
-            // Clear main canvas
             game.ctx.fillStyle = '#2d5016';
             game.ctx.fillRect(0, 0, game.canvas.width, game.canvas.height);
 
-            // Draw grass pattern (only for higher quality settings)
             if (game.settings.graphicsQuality !== 'low') {
                 game.ctx.fillStyle = '#3d6b1a';
+
                 for (let x = 0; x < game.canvas.width; x += 40) {
                     for (let y = 0; y < game.canvas.height; y += 40) {
                         if ((x + y) % 80 === 0) {
@@ -2598,7 +2695,6 @@
                 }
             }
 
-            // Draw world objects
             drawTrees();
             drawRocks();
             drawItems();
@@ -2606,11 +2702,8 @@
             drawShops();
             drawEnemies();
             drawPlayer();
-            
-            // Draw area boundaries
             drawAreaBoundaries();
 
-            // Draw minimap
             if (game.showMinimap) {
                 drawMinimap();
             }
@@ -2620,21 +2713,15 @@
             world.trees.forEach(tree => {
                 const screenX = tree.x - game.camera.x;
                 const screenY = tree.y - game.camera.y;
-                
+
                 if (screenX > -tree.size && screenX < game.canvas.width + tree.size &&
                     screenY > -tree.size && screenY < game.canvas.height + tree.size) {
-                    
-                    // Tree trunk
                     game.ctx.fillStyle = '#8B4513';
                     game.ctx.fillRect(screenX + tree.size * 0.4, screenY + tree.size * 0.7, tree.size * 0.2, tree.size * 0.3);
-                    
-                    // Tree foliage
                     game.ctx.fillStyle = '#228B22';
                     game.ctx.beginPath();
                     game.ctx.arc(screenX + tree.size * 0.5, screenY + tree.size * 0.4, tree.size * 0.4, 0, Math.PI * 2);
                     game.ctx.fill();
-                    
-                    // Tree shadow
                     game.ctx.fillStyle = 'rgba(0,0,0,0.2)';
                     game.ctx.beginPath();
                     game.ctx.ellipse(screenX + tree.size * 0.5, screenY + tree.size, tree.size * 0.3, tree.size * 0.1, 0, 0, Math.PI * 2);
@@ -2647,16 +2734,13 @@
             world.rocks.forEach(rock => {
                 const screenX = rock.x - game.camera.x;
                 const screenY = rock.y - game.camera.y;
-                
+
                 if (screenX > -rock.size && screenX < game.canvas.width + rock.size &&
                     screenY > -rock.size && screenY < game.canvas.height + rock.size) {
-                    
                     game.ctx.fillStyle = '#696969';
                     game.ctx.beginPath();
                     game.ctx.arc(screenX + rock.size * 0.5, screenY + rock.size * 0.5, rock.size * 0.4, 0, Math.PI * 2);
                     game.ctx.fill();
-                    
-                    // Rock highlight
                     game.ctx.fillStyle = '#A9A9A9';
                     game.ctx.beginPath();
                     game.ctx.arc(screenX + rock.size * 0.4, screenY + rock.size * 0.4, rock.size * 0.15, 0, Math.PI * 2);
@@ -2668,19 +2752,17 @@
         function drawItems() {
             world.items.forEach(item => {
                 if (item.collected) return;
-                
+
                 const screenX = item.x - game.camera.x;
                 const screenY = item.y - game.camera.y;
-                
+
                 if (screenX > -20 && screenX < game.canvas.width + 20 &&
                     screenY > -20 && screenY < game.canvas.height + 20) {
-                    
                     if (item.type === 'gold') {
                         game.ctx.fillStyle = '#FFD700';
                         game.ctx.beginPath();
                         game.ctx.arc(screenX, screenY, 8, 0, Math.PI * 2);
                         game.ctx.fill();
-                        
                         game.ctx.fillStyle = '#FFA500';
                         game.ctx.beginPath();
                         game.ctx.arc(screenX - 2, screenY - 2, 3, 0, Math.PI * 2);
@@ -2688,38 +2770,30 @@
                     } else {
                         game.ctx.fillStyle = '#FF69B4';
                         game.ctx.fillRect(screenX - 6, screenY - 8, 12, 16);
-                        
                         game.ctx.fillStyle = '#8B008B';
                         game.ctx.fillRect(screenX - 4, screenY - 2, 8, 8);
                     }
                 }
             });
         }
-        
+
         function drawChests() {
             world.chests.forEach(chest => {
                 if (chest.opened) return;
-                
+
                 const screenX = chest.x - game.camera.x;
                 const screenY = chest.y - game.camera.y;
-                
+
                 if (screenX > -30 && screenX < game.canvas.width + 30 &&
                     screenY > -30 && screenY < game.canvas.height + 30) {
-                    
-                    // Chest base
                     game.ctx.fillStyle = '#8B4513';
                     game.ctx.fillRect(screenX, screenY + 10, 30, 20);
-                    
-                    // Chest top
                     game.ctx.fillStyle = '#A0522D';
                     game.ctx.fillRect(screenX, screenY, 30, 10);
-                    
-                    // Chest details
                     game.ctx.fillStyle = '#FFD700';
                     game.ctx.fillRect(screenX + 5, screenY + 3, 20, 4);
                     game.ctx.fillRect(screenX + 13, screenY + 13, 4, 8);
-                    
-                    // Chest highlight
+
                     if (Math.abs(chest.x - player.x) < 50 && Math.abs(chest.y - player.y) < 50) {
                         game.ctx.strokeStyle = '#FFD700';
                         game.ctx.lineWidth = 2;
@@ -2728,20 +2802,16 @@
                 }
             });
         }
-        
+
         function drawShops() {
             world.shops.forEach(shop => {
                 const screenX = shop.x - game.camera.x;
                 const screenY = shop.y - game.camera.y;
-                
+
                 if (screenX > -shop.width && screenX < game.canvas.width + shop.width &&
                     screenY > -shop.height && screenY < game.canvas.height + shop.height) {
-                    
-                    // Shop building
                     game.ctx.fillStyle = '#8B4513';
                     game.ctx.fillRect(screenX, screenY, shop.width, shop.height);
-                    
-                    // Shop roof
                     game.ctx.fillStyle = '#A0522D';
                     game.ctx.beginPath();
                     game.ctx.moveTo(screenX - 5, screenY);
@@ -2749,8 +2819,6 @@
                     game.ctx.lineTo(screenX + shop.width + 5, screenY);
                     game.ctx.closePath();
                     game.ctx.fill();
-                    
-                    // Shop sign
                     game.ctx.fillStyle = '#FFD700';
                     game.ctx.fillRect(screenX + shop.width/2 - 10, screenY - 25, 20, 10);
                     game.ctx.fillStyle = '#000';
@@ -2758,9 +2826,8 @@
                     game.ctx.textAlign = 'center';
                     game.ctx.fillText('SHOP', screenX + shop.width/2, screenY - 18);
                     game.ctx.textAlign = 'left';
-                    
-                    // Shop highlight
-                    if (Math.abs(shop.x + shop.width/2 - player.x) < 60 && 
+
+                    if (Math.abs(shop.x + shop.width/2 - player.x) < 60 &&
                         Math.abs(shop.y + shop.height/2 - player.y) < 60) {
                         game.ctx.strokeStyle = '#FFD700';
                         game.ctx.lineWidth = 2;
@@ -2773,34 +2840,27 @@
         function drawEnemies() {
             world.enemies.forEach(enemy => {
                 if (!enemy.alive) return;
-                
+
                 const screenX = enemy.x - game.camera.x;
                 const screenY = enemy.y - game.camera.y;
-                
+
                 if (screenX > -enemy.width && screenX < game.canvas.width + enemy.width &&
                     screenY > -enemy.height && screenY < game.canvas.height + enemy.height) {
-                    
-                    // Enemy body
                     game.ctx.fillStyle = enemy.color;
                     game.ctx.fillRect(screenX, screenY, enemy.width, enemy.height);
-                    
-                    // Enemy eyes
                     game.ctx.fillStyle = '#FF0000';
                     game.ctx.fillRect(screenX + 5, screenY + 5, 4, 4);
                     game.ctx.fillRect(screenX + 16, screenY + 5, 4, 4);
-                    
-                    // Health bar above enemy
+
                     const hpBarWidth = 30;
                     const hpBarHeight = 4;
                     const hpPercent = enemy.hp / enemy.maxHp;
-                    
+
                     game.ctx.fillStyle = '#333';
                     game.ctx.fillRect(screenX - 2, screenY - 10, hpBarWidth, hpBarHeight);
-                    
                     game.ctx.fillStyle = hpPercent > 0.5 ? '#00FF00' : hpPercent > 0.25 ? '#FFFF00' : '#FF0000';
                     game.ctx.fillRect(screenX - 2, screenY - 10, hpBarWidth * hpPercent, hpBarHeight);
-                    
-                    // Chasing indicator
+
                     if (enemy.chasing) {
                         game.ctx.fillStyle = '#FF0000';
                         game.ctx.font = '12px Arial';
@@ -2813,28 +2873,21 @@
         function drawPlayer() {
             const screenX = player.x - game.camera.x;
             const screenY = player.y - game.camera.y;
-            
-            // Player shadow
+
             game.ctx.fillStyle = 'rgba(0,0,0,0.3)';
             game.ctx.beginPath();
             game.ctx.ellipse(screenX + player.width * 0.5, screenY + player.height + 2, player.width * 0.4, player.height * 0.1, 0, 0, Math.PI * 2);
             game.ctx.fill();
-            
-            // Player body
+
             game.ctx.fillStyle = characterClasses[game.playerClass].color;
             game.ctx.fillRect(screenX, screenY, player.width, player.height);
-            
-            // Player face
             game.ctx.fillStyle = '#FFE4B5';
             game.ctx.fillRect(screenX + 5, screenY + 5, 20, 15);
-            
-            // Player eyes
             game.ctx.fillStyle = '#000';
             game.ctx.fillRect(screenX + 8, screenY + 8, 2, 2);
             game.ctx.fillRect(screenX + 18, screenY + 8, 2, 2);
-            
-            // Player weapon
             game.ctx.fillStyle = '#C0C0C0';
+
             if (game.playerClass === 'warrior' || game.playerClass === 'rogue') {
                 game.ctx.fillRect(screenX + 25, screenY + 10, 8, 2);
                 game.ctx.fillRect(screenX + 30, screenY + 5, 2, 12);
@@ -2854,8 +2907,7 @@
                 game.ctx.arc(screenX + 30, screenY + 10, 3, 0, Math.PI * 2);
                 game.ctx.fill();
             }
-            
-            // Level indicator
+
             game.ctx.fillStyle = '#FFD700';
             game.ctx.font = 'bold 12px Arial';
             game.ctx.fillText(player.level.toString(), screenX + player.width + 5, screenY - 2);
@@ -2865,36 +2917,28 @@
             game.ctx.strokeStyle = 'rgba(255,255,255,0.3)';
             game.ctx.lineWidth = 2;
             game.ctx.setLineDash([5, 5]);
-            
+
             for (let [areaName, area] of Object.entries(world.areas)) {
                 const screenX = area.x - game.camera.x;
                 const screenY = area.y - game.camera.y;
-                
                 game.ctx.strokeRect(screenX, screenY, area.width, area.height);
-                
-                // Area name
                 game.ctx.fillStyle = 'rgba(255,255,255,0.8)';
                 game.ctx.font = 'bold 16px Arial';
                 game.ctx.fillText(areaName, screenX + 10, screenY + 25);
             }
-            
+
             game.ctx.setLineDash([]);
         }
 
         function drawMinimap() {
             const minimapScale = 0.1;
-            
-            // Clear minimap
             game.minimapCtx.fillStyle = '#2d5016';
             game.minimapCtx.fillRect(0, 0, 150, 150);
-            
-            // Draw world bounds
             game.minimapCtx.strokeStyle = '#fff';
             game.minimapCtx.lineWidth = 1;
             game.minimapCtx.strokeRect(0, 0, world.width * minimapScale, world.height * minimapScale);
-            
-            // Draw areas
             game.minimapCtx.strokeStyle = 'rgba(255,255,255,0.5)';
+
             for (let area of Object.values(world.areas)) {
                 game.minimapCtx.strokeRect(
                     area.x * minimapScale,
@@ -2903,8 +2947,7 @@
                     area.height * minimapScale
                 );
             }
-            
-            // Draw enemies
+
             game.minimapCtx.fillStyle = '#FF0000';
             world.enemies.forEach(enemy => {
                 if (enemy.alive) {
@@ -2915,8 +2958,7 @@
                     );
                 }
             });
-            
-            // Draw items
+
             game.minimapCtx.fillStyle = '#FFD700';
             world.items.forEach(item => {
                 if (!item.collected) {
@@ -2927,8 +2969,7 @@
                     );
                 }
             });
-            
-            // Draw chests
+
             game.minimapCtx.fillStyle = '#8B4513';
             world.chests.forEach(chest => {
                 if (!chest.opened) {
@@ -2939,8 +2980,7 @@
                     );
                 }
             });
-            
-            // Draw shops
+
             game.minimapCtx.fillStyle = '#FFD700';
             world.shops.forEach(shop => {
                 game.minimapCtx.fillRect(
@@ -2949,16 +2989,14 @@
                     2, 2
                 );
             });
-            
-            // Draw player
+
             game.minimapCtx.fillStyle = characterClasses[game.playerClass].color;
             game.minimapCtx.fillRect(
                 player.x * minimapScale - 2,
                 player.y * minimapScale - 2,
                 4, 4
             );
-            
-            // Draw view area
+
             game.minimapCtx.strokeStyle = '#4a90e2';
             game.minimapCtx.lineWidth = 1;
             game.minimapCtx.strokeRect(
@@ -2972,25 +3010,30 @@
         // Main game loop
         function gameLoop(currentTime) {
             if (!game.running) return;
-            
+
             const deltaTime = currentTime - game.lastTime;
             game.lastTime = currentTime;
-            
-            // Update game logic
+
+            if (currentTime - game.lastEnemyRespawn > game.enemyRespawnInterval) {
+                generateEnemies();
+                game.lastEnemyRespawn = currentTime;
+            }
+
+            if (currentTime - game.lastItemRespawn > game.itemRespawnInterval) {
+                generateItems();
+                game.lastItemRespawn = currentTime;
+            }
+
             updatePlayer(deltaTime);
             updateEnemies(deltaTime);
-            
-            // Render everything
             render();
-            
             requestAnimationFrame(gameLoop);
         }
 
         // Initialize and start game
         function startGame() {
             console.log('🎮 Starting 2D Fantasy RPG...');
-            
-            // Set player stats based on class
+
             const classStats = characterClasses[game.playerClass].stats;
             player.hp = classStats.hp;
             player.maxHp = classStats.maxHp;
@@ -3000,37 +3043,26 @@
             player.defense = classStats.defense;
             player.speed = classStats.speed;
             player.color = characterClasses[game.playerClass].color;
-            
-            // Initialize world
+
             initWorld();
             updateUI();
-            
-            // Show welcome messages
             addMessage(`🌟 Welcome to the Fantasy RPG Adventure, ${game.playerName}!`);
             addMessage(`🏆 You are a ${characterClasses[game.playerClass].name}`);
             addMessage('🎯 Use WASD to move, Space to attack, I for potions');
             addMessage('📍 Click on enemies to start combat or press Space');
             addMessage('🗺️ Press M to toggle minimap, Q for quests, S for shop');
-            
-            // Show initial quest
             addMessage(`📜 New Quest: ${player.quests[0].id} - ${player.quests[0].description}`);
-            
-            // Show game container
+
             document.getElementById('gameContainer').style.display = 'flex';
-            
-            // Start the game loop
             requestAnimationFrame(gameLoop);
         }
 
         // Start the game when page loads
         window.addEventListener('load', () => {
-            // Load settings from localStorage
             const savedSettings = localStorage.getItem('gameSettings');
             if (savedSettings) {
                 game.settings = JSON.parse(savedSettings);
             }
-            
-            // Show main menu
             document.getElementById('mainMenu').style.display = 'flex';
         });
     </script>
